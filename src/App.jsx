@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './sass/app.scss';
-import Hello from './components/hello/Hello.jsx';
+import Neck from './components/neck/Neck.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="container">
-        <Hello message="Hello, World!" />
+        <Neck />
       </div>
     );
   }

@@ -1,13 +1,13 @@
-html {
-	height: 100%;
+html,
+body {
+	min-height: 100%;
 }
 
 body {
 	background: linear-gradient(160deg, #0ebfac 0%, #3c7ff5 30%, #5f44e8 75%);
-  background-repeat: no-repeat;
-  background-size: stretch;
+	background-repeat: no-repeat;
+  background-size: cover;
 	font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-	padding: 40px 80px;
 }
 
 h1 {
@@ -15,4 +15,35 @@ h1 {
 	text-shadow: 0 1px 1px rgba(0,0,0,0.25);
 	font-weight: 300;
 	font-size: 2.4em;
+}
+
+.neck {
+	background: #fff;
+}
+
+.string {
+	display: flex;
+	flex: 1;
+	border-bottom: 1px solid #ccc;
+}
+
+.fret {
+	flex: 1;
+	min-height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+@media (max-width: 900px) {
+	.neck {
+		display: flex;
+		flex-direction: row;
+	}
+	.string {
+		flex-direction: column;
+	}
+	.fret {
+		flex-direction: row;
+		border-right: 1px solid #ccc;
+	}
 }
