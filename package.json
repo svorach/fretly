@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-webpack-boilerplate",
+  "name": "Fretly",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -45,9 +45,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svorach/react-redux-webpack-starter.git"
+    "url": "git+https://bitbucket.org/svorach/fretly"
   },
   "author": "Shane Vorachek",
   "license": "ISC",
-  "homepage": "https://github.com/svorach/react-redux-webpack-starter#readme"
+  "homepage": "https://bitbucket.org/svorach/fretly#readme"
 }
