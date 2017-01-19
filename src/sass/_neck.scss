@@ -39,15 +39,17 @@
 
 @keyframes note-entry {
 	0% {
-		transform: scale(1);
+		transform: scale(0);
+		top: -25%;
+		opacity: 0;
 	}
 
 	50% {
 		transform: scale(1.25);
+		background: $secondary;
 	}
 
 	100% {
-		transform: scale(1);
 	}
 }
 
@@ -56,7 +58,7 @@
   color: $note-text;
   display: block;
   height: $note-size;
-  font-size: 18px;
+  font-size: $note-text-size;
   font-weight: 700;
   left: 50%;
 	line-height: $note-size;
@@ -65,14 +67,13 @@
   position: absolute;
   top: 50%;
   width: $note-size;
-	will-change: trasnform;
   z-index: 1;
-	transition: all 0.6s ease-out;
+	transition: transform .75s ease-in-out;
   
   &.highlight {
-		animation-duration: 0.6s;
+		animation-duration: .75s;
 		animation-name: note-entry;
-		animation-timing-function: ease-in;
+		animation-timing-function: ease-in-out;
 		background: $alt-note-highlight-background-color;
 		box-shadow: $hard-shadow;
     color: #fff;
