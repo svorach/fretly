@@ -7,6 +7,7 @@ body {
 
 body {
 	background: linear-gradient(160deg, #0ebfac 0%, #3c7ff5 30%, #5f44e8 75%);
+	background: linear-gradient(0deg, #929292 0%, #ffffff 30%, #f7f5ff 75%);
 	background-repeat: no-repeat;
   background-size: cover;
 	font-family: 'Fira Mono', monospace;
@@ -20,11 +21,17 @@ h1 {
 	font-size: 2.4em;
 }
 
-$stringBorder: 1px solid #fff;
+$fretboardBg: #88785f;
+
+$stringBorderColor: rgba(255,255,255,0.2);
 $fretBorder: 1px solid #ccc;
 
+$stringCellHeight: 40px;
+$stringDisplayWidth: 3px;
+
 .neck {
-	background: rgba(255,255,255,0.8);
+	background: $fretboardBg;
+	color: #fff;
 	position: relative;
 }
 
@@ -36,17 +43,35 @@ $fretBorder: 1px solid #ccc;
 		content: '';
     display: block;
     position: absolute;
-    border-bottom: $stringBorder;
+		border-bottom: $stringDisplayWidth solid $stringBorderColor;
     width: 100%;
+		margin-top: ($stringCellHeight - $stringDisplayWidth) / 2;
 	}
+}
+
+.fret:nth-child(4),
+.fret:nth-child(6),
+.fret:nth-child(8),
+.fret:nth-child(10),
+.fret:nth-child(13),
+.fret:nth-child(16),
+.fret:nth-child(18),
+.fret:nth-child(20),
+.fret:nth-child(22),
+.fret:nth-child(25) {
+	background: darken($fretboardBg, 10%);
 }
 
 .fret {
 	flex: 1;
-	min-height: 40px;
-	line-height: 40px;
+	min-height: $stringCellHeight;
+	line-height: $stringCellHeight;
 	text-align: center;
 	border-right: $fretBorder;
+
+	&.highlight {
+		background: #444c4b !important;
+	}
 }
 
 @media (max-width: 900px) {
@@ -60,9 +85,10 @@ $fretBorder: 1px solid #ccc;
 
 		&::after {
 			border-bottom: none;
-			border-right: $stringBorder;
+			border-right: $stringDisplayWidth solid $stringBorderColor;
 			height: 100%;
 			width: 1px;
+			margin-top: $stringCellHeight;
 		}
 	}
 
@@ -74,7 +100,6 @@ $fretBorder: 1px solid #ccc;
 }
 
 @for $i from 1 through 25 {
-	
 	.fret:nth-child(#{$i}) {
 		@if (25 - $i) > 8 {
 			flex: 25 - $i;
@@ -84,4 +109,10 @@ $fretBorder: 1px solid #ccc;
 			flex: 8;
 		}
 	}
+}
+
+.fret:first-child {
+	flex: 5;
+	background: #b7b58c;
+	color: #000;
 }
