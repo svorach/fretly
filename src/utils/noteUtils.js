@@ -3,7 +3,7 @@ const OCTAVE_SEMITONE_COUNT = 12;
 const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
 const scales = [
   { name: 'C Major (Ionian)', notes: ['C', 'D', 'E', 'F', 'G', 'A', 'B'] },
-  { name: 'B Lydian', notes: ['B', 'C#', 'D#', 'E#', 'F#', 'G#', 'A#'] },
+  { name: 'D Lydian', notes: ['D', 'E', 'F#', 'G#', 'A', 'B', 'C#'] },
   { name: 'B Natural Minor', notes: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'] },
   { name: 'B Harmonic Minor', notes: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A#'] },
 ];

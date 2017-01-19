@@ -4,11 +4,15 @@ import _ from 'lodash';
 
 import './sass/app.scss';
 import Neck from './components/neck/Neck.jsx';
+import ScaleList from './components/scaleList/ScaleList.jsx';
 import { scales } from './utils/noteUtils';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    scales[0].active = true;
+
     this.setScale = this.setScale.bind(this);
     this.highlight = this.highlight.bind(this);
     this.state = {
@@ -16,10 +20,15 @@ class App extends React.Component {
     };
   }
 
-  setScale(e, index) {
+  setScale(e, scale) {
     e.preventDefault();
 
-    this.setState({ scale: scales[index] });
+    const activeScale = _.find(scales, { active: true });
+    const nextScale = Object.assign(scale, { active: true });
+
+    activeScale.active = false;
+
+    this.setState({ scale: nextScale });
   }
 
   highlight(note) {
@@ -27,16 +36,14 @@ class App extends React.Component {
   }
 
   render() {
+    const scale = this.state.scale;
+
     return (
       <div id="container">
         <h1>Fretly</h1>
+        <ScaleList scales={scales} setScale={this.setScale} activeScale={scale} />
 
-        <ul class="scale-list">
-          <li><a href="" onClick={(e) => this.setScale(e, 0)}>C Major (Ionian)</a></li>
-          <li><a href="" onClick={(e) => this.setScale(e, 1)}>B Lydian</a></li>
-        </ul>
-
-        <Neck scale={this.state.scale} highlight={this.highlight} />
+        <Neck scale={scale} highlight={this.highlight} />
       </div>
     );
   }

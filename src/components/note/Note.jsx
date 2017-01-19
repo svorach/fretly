@@ -2,10 +2,11 @@ import React from 'react';
 
 function Note({ note, highlight }) {
   const classList = ['note'];
-  console.log(note);
+
   if (highlight(note)) {
     classList.push('highlight');
   }
+
   return <span className={classList.join(' ')}>{note}</span>;
 }
 
