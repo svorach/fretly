@@ -150,6 +150,18 @@
 		border-right: none;
 		flex: 1;
 	}
+
+	.dot {
+		left: 0;
+		margin-left: -12px;
+		margin-top: -12px;
+		top: 50%;
+		width: 24px;
+	}
+
+	.dot-double-top {
+		left: -100%;
+	}
 }
 
 @mixin adjustFretSize($totalFrets) {
