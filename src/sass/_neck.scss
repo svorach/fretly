@@ -4,7 +4,6 @@
 	background: $fretboard-bg;
 	color: #fff;
 	position: relative;
-  width: 150%;
 }
 
 .string {
@@ -29,9 +28,27 @@
 	position: relative;
 	text-align: center;
 
-  &::first-child {
+  &:first-child {
     background: $nut-color;
+
+    & > .note {
+      color: #fff;
+    }
   }
+}
+
+@keyframes note-entry {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.25);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 
 .note {
@@ -48,10 +65,17 @@
   position: absolute;
   top: 50%;
   width: $note-size;
+	will-change: trasnform;
   z-index: 1;
+	transition: all 0.6s ease-out;
   
   &.highlight {
+		animation-duration: 0.6s;
+		animation-name: note-entry;
+		animation-timing-function: ease-in;
 		background: $alt-note-highlight-background-color;
+		box-shadow: $hard-shadow;
+    color: #fff;
 	}
 }
 
