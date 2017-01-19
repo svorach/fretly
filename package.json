@@ -1,7 +1,7 @@
 {
   "name": "Fretly",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Lightweight HTML Fretboard Visualizer",
   "main": "webpack.config.js",
   "scripts": {
     "test": "mocha -w test/helpers/browser.js test/**/*.spec.js",
@@ -38,8 +38,10 @@
     "eslint-plugin-import": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.0.1",
+    "lodash": "^4.17.4",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2",
+    "react-redux": "^5.0.2",
     "redux-devtools": "^3.2.0",
     "webpack-dev-server": "^1.14.1"
   },
