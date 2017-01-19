@@ -10,9 +10,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.setScale = this.setScale.bind(this);
-    this.highlightNote = this.highlightNote.bind(this);
+    this.highlight = this.highlight.bind(this);
     this.state = {
-      scale: {},
+      scale: scales[0],
     };
   }
 
@@ -22,17 +22,21 @@ class App extends React.Component {
     this.setState({ scale: scales[index] });
   }
 
-  highlightNote(note) {
+  highlight(note) {
     return (_.indexOf(this.state.scale.notes, note) !== -1);
   }
 
   render() {
     return (
       <div id="container">
-        <a href="" onClick={(e) => this.setScale(e, 0)}>C Major (Ionian)</a>
-        <a href="" onClick={(e) => this.setScale(e, 1)}>B Lydian</a>
+        <h1>Fretly</h1>
 
-        <Neck scale={this.state.scale} highlightNote={this.highlightNote} />
+        <ul class="scale-list">
+          <li><a href="" onClick={(e) => this.setScale(e, 0)}>C Major (Ionian)</a></li>
+          <li><a href="" onClick={(e) => this.setScale(e, 1)}>B Lydian</a></li>
+        </ul>
+
+        <Neck scale={this.state.scale} highlight={this.highlight} />
       </div>
     );
   }

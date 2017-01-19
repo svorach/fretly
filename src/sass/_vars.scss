@@ -1,0 +1,28 @@
+// colors
+$primary: #3485b9;
+$secondary: #C54B4B;
+$fretboard-bg: #cecece; //#88785f;
+$fret-border-color: #ddd;
+$string-border-color: rgba(255,255,255,0.2);
+$small-shadow: 0 1px 1px rgba(0,0,0,0.25);
+
+// neck
+$nut-color: #b7b58c;
+
+//strings
+$string-height: 60px;
+$string-display-width: 3px;
+
+// frets
+$fret-border: 2px solid $fret-border-color;
+
+// notes
+$note-text: #2b2b2b;
+$note-highlight-background-color: $secondary;
+$alt-note-highlight-background-color: $primary;
+$note-size: 40px;
+
+// dots
+$dot-size: 24px;
+$dot-background: #fff;
+$dot-border: 1px solid darken($fret-border-color, 20%);

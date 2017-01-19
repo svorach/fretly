@@ -1,17 +1,13 @@
 import React from 'react';
-// import { notes, getNoteMap, getIndexMap } from '../../utils/noteUtils';
+import Note from '../note/Note.jsx';
 
-function Fret({ data, highlightNote }) {
-  const classList = ['fret'];
-  if (highlightNote(data)) {
-    classList.push('highlight');
-  }
-  return (<div className={classList.join(' ')}>{data}</div>);
+function Fret({ note, highlight }) {
+  return (<div className="fret"><Note note={note} highlight={highlight} /></div>);
 }
 
 Fret.propTypes = {
-  data: React.PropTypes.string,
-  highlightNote: React.PropTypes.func,
+  note: React.PropTypes.string,
+  highlight: React.PropTypes.func,
 };
 
 export default Fret;

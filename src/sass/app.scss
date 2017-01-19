@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+@import '_vars';
+@import '_neck';
+
+*,
+*::after {
+	box-sizing: border-box;
+}
 
 html,
 body {
@@ -6,113 +13,44 @@ body {
 }
 
 body {
-	background: linear-gradient(160deg, #0ebfac 0%, #3c7ff5 30%, #5f44e8 75%);
-	background: linear-gradient(0deg, #929292 0%, #ffffff 30%, #f7f5ff 75%);
+	background: #fff;
 	background-repeat: no-repeat;
   background-size: cover;
-	font-family: 'Fira Mono', monospace;
-	padding: 40px;
+	font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
+	padding: 20px 40px;
 }
 
 h1 {
-	color: #fff;
+	color: $alt-note-highlight-background-color;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.25);
-	font-weight: 300;
-	font-size: 2.4em;
+	font-size: 36px;
+	font-weight: 700;
+	padding: 0;
+	margin: 0;
 }
 
-$fretboardBg: #88785f;
+a {
+	color: $primary;
+	text-decoration: none;
 
-$stringBorderColor: rgba(255,255,255,0.2);
-$fretBorder: 1px solid #ccc;
-
-$stringCellHeight: 40px;
-$stringDisplayWidth: 3px;
-
-.neck {
-	background: $fretboardBg;
-	color: #fff;
-	position: relative;
-}
-
-.string {
-	display: flex;
-	flex: 1;
-	
-	&::after {
-		content: '';
-    display: block;
-    position: absolute;
-		border-bottom: $stringDisplayWidth solid $stringBorderColor;
-    width: 100%;
-		margin-top: ($stringCellHeight - $stringDisplayWidth) / 2;
+	&:hover {
+		color: lighten($primary, 20%);
 	}
 }
 
-.fret:nth-child(4),
-.fret:nth-child(6),
-.fret:nth-child(8),
-.fret:nth-child(10),
-.fret:nth-child(13),
-.fret:nth-child(16),
-.fret:nth-child(18),
-.fret:nth-child(20),
-.fret:nth-child(22),
-.fret:nth-child(25) {
-	background: darken($fretboardBg, 10%);
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 20px 0;
+	width: 200px;
 }
 
-.fret {
-	flex: 1;
-	min-height: $stringCellHeight;
-	line-height: $stringCellHeight;
-	text-align: center;
-	border-right: $fretBorder;
+li {
+	border-bottom: 1px solid #ccc;
+	line-height: 32px;
+	font-size: 18px;
 
-	&.highlight {
-		background: #444c4b !important;
+	&:last-child {
+		border-bottom: none;
 	}
-}
-
-@media (max-width: 900px) {
-	.neck {
-		display: flex;
-		flex-direction: row;
-	}
-	
-	.string {
-		flex-direction: column;
-
-		&::after {
-			border-bottom: none;
-			border-right: $stringDisplayWidth solid $stringBorderColor;
-			height: 100%;
-			width: 1px;
-			margin-top: $stringCellHeight;
-		}
-	}
-
-	.fret {
-		flex: 1;
-		border-right: none;
-		border-bottom: $fretBorder;
-	}
-}
-
-@for $i from 1 through 25 {
-	.fret:nth-child(#{$i}) {
-		@if (25 - $i) > 8 {
-			flex: 25 - $i;
-		}
-
-		@else {
-			flex: 8;
-		}
-	}
-}
-
-.fret:first-child {
-	flex: 5;
-	background: #b7b58c;
-	color: #000;
 }
