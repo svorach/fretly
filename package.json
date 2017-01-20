@@ -4,7 +4,8 @@
   "description": "Lightweight HTML Fretboard Visualizer",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "mocha -w test/helpers/browser.js test/**/*.spec.js",
+    "test:watch": "mocha -w test/helpers/browser.js test/**/*.spec.js",
+    "test": "mocha test/helpers/browser.js test/**/*.spec.js",
     "dev": "webpack-dev-server --progress --colors --hot --inline",
     "build": "webpack",
     "prod": "webpack -p",
