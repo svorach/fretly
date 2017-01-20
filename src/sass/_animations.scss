@@ -1,0 +1,12 @@
+@keyframes note-entry {
+  0% {
+    transform: scale(0);
+    top: -25%;
+    opacity: 0;
+  }
+
+  10% {
+    transform: scale(1.5);
+    background: $secondary;
+  }
+}

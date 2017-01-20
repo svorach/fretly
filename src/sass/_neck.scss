@@ -1,14 +1,18 @@
 @import '_vars';
 @import '_mixins';
+@import '_animations';
 
 .neck {
   background: $fretboard-bg;
   color: #fff;
+  height: 400px;
   position: relative;
 }
 
 .string {
   display: flex;
+  position: relative;
+  height: $string-height;
   flex: 1;
   
   &::after {
@@ -16,15 +20,16 @@
     content: '';
     display: block;
     position: absolute;
-    margin-top: ($string-height - $string-display-width) / 2;
+    top: 50%;
+    margin-top: - ($string-display-width / 2);
     width: 100%;
   }
 }
 
 .fret {
   border-right: $fret-border;
+  height: 100%;
   flex: 1;
-  min-height: $string-height;
   overflow: visible;
   position: relative;
   text-align: center;
@@ -35,22 +40,6 @@
     & > .note {
       color: #fff;
     }
-  }
-}
-
-@keyframes note-entry {
-  0% {
-    transform: scale(0);
-    top: -25%;
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.25);
-    background: $secondary;
-  }
-
-  100% {
   }
 }
 
@@ -75,8 +64,7 @@
     animation-duration: .75s;
     animation-name: note-entry;
     animation-timing-function: ease-in-out;
-    background: $alt-note-highlight-background-color;
-    box-shadow: $hard-shadow;
+    background: $note-highlight;
     color: #fff;
   }
 }
@@ -98,11 +86,13 @@
 
 .dot-double-top {
   @extend .dot;
-  margin-top: (-12px + -($string-height));
+  top: -100%;
+  margin-top: -12px;
 }
 
 .dot-double-bot {
   @extend .dot;
+  bottom: $string-height;
   margin-top: -12px;
 }
 
@@ -127,17 +117,18 @@
   @extend .dot-double-bot;
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1200px) {
   @include adjustFretSize(24, false);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   @include adjustFretSize(24, true);
 
   .neck {
     display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
     margin: 0 auto;
-    width: 80%;
   }
   
   .string {
@@ -147,8 +138,10 @@
       border-bottom: none;
       border-right: $string-display-width solid $string-border-color;
       height: 100%;
-      margin-top: $string-height;
+      left: 50%;
+      margin-left: - ($string-display-width / 2);
       width: 1px;
+      top: 0;
     }
   }
 
@@ -158,15 +151,24 @@
     flex: none;
   }
 
+  .note {
+    transform: scale(1.5);
+  }
+
   .dot {
-    left: 0;
-    margin-left: -12px;
-    margin-top: -12px;
+    width: $dot-size * 2;
+    height: $dot-size * 2;
     top: 50%;
-    width: 24px;
+    margin-top: - $dot-size;
+    margin-left: - $dot-size;
+    left: 100%;
   }
 
   .dot-double-top {
-    left: -100%;
+    left: 0%;
+  }
+
+  .dot-double-bot {
+    left: 300%;
   }
 }

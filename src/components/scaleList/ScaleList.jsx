@@ -7,7 +7,7 @@ const mapScales = (scales, setScale) =>
 const ScaleList = ({ scales, setScale, clearScale }) =>
   <ul className="scale-list">
     {mapScales(scales, setScale)}
-    <li><a href="" onClick={clearScale}>Clear Scale</a></li>
+    <li><a href="" onClick={clearScale}>Clear Selected Scale</a></li>
   </ul>;
 
 ScaleList.propTypes = ({

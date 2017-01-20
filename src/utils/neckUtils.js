@@ -9,6 +9,7 @@ const tuning = [
   { stringNumber: 4, rootNote: 'D' },
   { stringNumber: 5, rootNote: 'A' },
   { stringNumber: 6, rootNote: 'E' },
+  // { stringNumber: 7, rootNote: 'B' },
 ];
 
 function mapNotesToFrets(string) {

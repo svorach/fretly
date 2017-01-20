@@ -18,10 +18,11 @@ body {
   background-size: cover;
   font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
   padding: 20px 40px;
+  text-transform: uppercase;
 }
 
 h1 {
-  color: $alt-note-highlight-background-color;
+  color: $primary;
   text-shadow: 0 1px 1px rgba(0,0,0,0.25);
   font-size: 36px;
   font-weight: 700;
@@ -31,11 +32,13 @@ h1 {
 
 a {
   color: $primary;
+  border-bottom: 1px solid #ccc;
   text-decoration: none;
 
   &.active,
   &:hover {
-    color: lighten($primary, 20%);
+    color: $secondary;
+    border-color: $secondary;
   }
 }
 
@@ -44,15 +47,15 @@ ul {
   list-style: none;
   padding: 0;
   margin: 20px 0;
-  width: 200px;
 }
 
 li {
-  border-bottom: 1px solid #ccc;
   line-height: 32px;
   font-size: 18px;
+  display: inline;
+  margin-right: 22px;
 
-  &:last-child {
+  &:last-child a {
     border-bottom: none;
   }
 }

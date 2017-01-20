@@ -18,7 +18,8 @@
       flex: 5;
     }
   } @else {
-    $mobile-max-fret-height: 200px;
+    $mobile-max-fret-height: 240px;
+    $mobile-min-fret-height: 80px;
 
     @for $i from 1 through $total-frets {
       .fret:nth-child(#{$i}) {
@@ -27,13 +28,13 @@
         }
 
         @else {
-          flex: 8;
+          flex: $mobile-min-fret-height;
         }
       }
     }
 
     .fret:first-child {
-      flex: 5;
+      flex: $mobile-min-fret-height / 2;
     }
   }
 }

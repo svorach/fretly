@@ -1,5 +1,5 @@
 // colors
-$primary: #3485b9;
+$primary: rgba(40, 100, 140, 0.65);
 $secondary: #8461a5;
 $fretboard-bg: #484033;
 $fretboard-bg: #cecece;
@@ -9,8 +9,10 @@ $nut-color: #b7b58c;
 $nut-color: #383838;
 
 //strings
-$string-height: 60px;
-$string-display-width: 1px;
+$string-count: 6;
+// sass is weird? 1 = 100; 100 / 6 strings
+$string-height: percentage(1 / $string-count); 
+$string-display-width: 2px;
 $string-border-color: rgba(255,255,255,0.5);
 
 // frets
@@ -18,16 +20,16 @@ $fret-border-color: #969696;
 $fret-border: 3px solid $fret-border-color;
 
 // notes
-$note-text: #ababab;
-$note-highlight-background-color: $secondary;
-$alt-note-highlight-background-color: $primary;
-$note-size: 28px;
-$note-text-size: 14px;
+$note-text: #3a3a3a;
+$note-highlight: $primary;
+$note-size: 30px;
+$note-text-size: 16px;
 
 // dots
 $dot-size: 24px;
 $dot-background: #fff;
 $dot-border: none;
+$dot-size-mobile: $dot-size * 2;
 
 // effects
 $hard-shadow: 0 1px 1px rgba(0,0,0,0.8);

@@ -53,6 +53,7 @@ class App extends React.Component {
     return (
       <div id="container">
         <h1>Fretly</h1>
+        <span>A work in progress proudly crafted by <a href="mailto:shane.vorachek@gmail.com">Shane Vorachek</a></span><br />
 
         <ScaleList
           scales={scales}
