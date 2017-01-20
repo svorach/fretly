@@ -1,0 +1,39 @@
+@mixin adjustFretSize($total-frets, $mobile) {
+  $total-frets: $total-frets + 1; // compensate for the nut
+
+  @if $mobile == false {
+    @for $i from 1 through $total-frets {
+      .fret:nth-child(#{$i}) {
+        @if ($total-frets - $i) > 8 {
+          flex: $total-frets - $i;
+        }
+
+        @else {
+          flex: 8;
+        }
+      }
+    }
+
+    .fret:first-child {
+      flex: 5;
+    }
+  } @else {
+    $mobile-max-fret-height: 200px;
+
+    @for $i from 1 through $total-frets {
+      .fret:nth-child(#{$i}) {
+        @if ($total-frets - $i) > 8 {
+          height: $mobile-max-fret-height - $i * 10;
+        }
+
+        @else {
+          flex: 8;
+        }
+      }
+    }
+
+    .fret:first-child {
+      flex: 5;
+    }
+  }
+}

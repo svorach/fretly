@@ -1,32 +1,33 @@
 @import '_vars';
+@import '_mixins';
 
 .neck {
-	background: $fretboard-bg;
-	color: #fff;
-	position: relative;
+  background: $fretboard-bg;
+  color: #fff;
+  position: relative;
 }
 
 .string {
-	display: flex;
-	flex: 1;
-	
-	&::after {
-		border-bottom: $string-display-width solid $string-border-color;
-		content: '';
+  display: flex;
+  flex: 1;
+  
+  &::after {
+    border-bottom: $string-display-width solid $string-border-color;
+    content: '';
     display: block;
     position: absolute;
-		margin-top: ($string-height - $string-display-width) / 2;
+    margin-top: ($string-height - $string-display-width) / 2;
     width: 100%;
-	}
+  }
 }
 
 .fret {
-	border-right: $fret-border;
-	flex: 1;
-	min-height: $string-height;
-	overflow: visible;
-	position: relative;
-	text-align: center;
+  border-right: $fret-border;
+  flex: 1;
+  min-height: $string-height;
+  overflow: visible;
+  position: relative;
+  text-align: center;
 
   &:first-child {
     background: $nut-color;
@@ -38,19 +39,19 @@
 }
 
 @keyframes note-entry {
-	0% {
-		transform: scale(0);
-		top: -25%;
-		opacity: 0;
-	}
+  0% {
+    transform: scale(0);
+    top: -25%;
+    opacity: 0;
+  }
 
-	50% {
-		transform: scale(1.25);
-		background: $secondary;
-	}
+  50% {
+    transform: scale(1.25);
+    background: $secondary;
+  }
 
-	100% {
-	}
+  100% {
+  }
 }
 
 .note {
@@ -61,48 +62,48 @@
   font-size: $note-text-size;
   font-weight: 700;
   left: 50%;
-	line-height: $note-size;
+  line-height: $note-size;
   margin-left: - ($note-size / 2);
   margin-top: - ($note-size / 2);
   position: absolute;
   top: 50%;
   width: $note-size;
   z-index: 1;
-	transition: transform .75s ease-in-out;
+  transition: transform .75s ease-in-out;
   
   &.highlight {
-		animation-duration: .75s;
-		animation-name: note-entry;
-		animation-timing-function: ease-in-out;
-		background: $alt-note-highlight-background-color;
-		box-shadow: $hard-shadow;
+    animation-duration: .75s;
+    animation-name: note-entry;
+    animation-timing-function: ease-in-out;
+    background: $alt-note-highlight-background-color;
+    box-shadow: $hard-shadow;
     color: #fff;
-	}
+  }
 }
 
 .dot {
   background: $dot-background;
-	border-radius: 100%;
-	border: $dot-border;
-	content: '';
-	height: $dot-size;
-	display: block;
-	left: 50%;
-	margin-left: - ($dot-size / 2);
-	margin-top: - ($dot-size / 2);
-	position: absolute;
-	top: 0%;
-	width: $dot-size;
+  border-radius: 100%;
+  border: $dot-border;
+  content: '';
+  height: $dot-size;
+  display: block;
+  left: 50%;
+  margin-left: - ($dot-size / 2);
+  margin-top: - ($dot-size / 2);
+  position: absolute;
+  top: 0%;
+  width: $dot-size;
 }
 
 .dot-double-top {
-	@extend .dot;
-	margin-top: (-12px + -($string-height));
+  @extend .dot;
+  margin-top: (-12px + -($string-height));
 }
 
 .dot-double-bot {
-	@extend .dot;
-	margin-top: -12px;
+  @extend .dot;
+  margin-top: -12px;
 }
 
 .string:nth-child(4) .fret:nth-child(4)::after,
@@ -113,75 +114,59 @@
 .string:nth-child(4) .fret:nth-child(18)::after,
 .string:nth-child(4) .fret:nth-child(20)::after,
 .string:nth-child(4) .fret:nth-child(22)::after {
-	@extend .dot;
+  @extend .dot;
 }
 
 .string:nth-child(4) .fret:nth-child(13)::after,
 .string:nth-child(4) .fret:nth-child(25)::after {
-	@extend .dot-double-top;
+  @extend .dot-double-top;
 }
 
 .string:nth-child(5) .fret:nth-child(13)::after,
 .string:nth-child(5) .fret:nth-child(25)::after {
-	@extend .dot-double-bot;
+  @extend .dot-double-bot;
+}
+
+@media (min-width: 901px) {
+  @include adjustFretSize(24, false);
 }
 
 @media (max-width: 900px) {
-	.neck {
-		display: flex;
+  @include adjustFretSize(24, true);
+
+  .neck {
+    display: flex;
     margin: 0 auto;
     width: 80%;
-	}
-	
-	.string {
-		flex-direction: column;
+  }
+  
+  .string {
+    flex-direction: column;
 
-		&::after {
-			border-bottom: none;
-			border-right: $string-display-width solid $string-border-color;
-			height: 100%;
-			margin-top: $string-height;
-			width: 1px;
-		}
-	}
-
-	.fret {
-		border-bottom: $fret-border;
-		border-right: none;
-		flex: 1;
-	}
-
-	.dot {
-		left: 0;
-		margin-left: -12px;
-		margin-top: -12px;
-		top: 50%;
-		width: 24px;
-	}
-
-	.dot-double-top {
-		left: -100%;
-	}
-}
-
-@mixin adjustFretSize($totalFrets) {
-  $totalFrets: $totalFrets + 1; // compensate for the nut
-
-  @for $i from 1 through $totalFrets {
-    .fret:nth-child(#{$i}) {
-      @if ($totalFrets - $i) > 8 {
-        flex: $totalFrets - $i;
-      }
-
-      @else {
-        flex: 8;
-      }
+    &::after {
+      border-bottom: none;
+      border-right: $string-display-width solid $string-border-color;
+      height: 100%;
+      margin-top: $string-height;
+      width: 1px;
     }
   }
 
-  .fret:first-child {
-    flex: 5;
+  .fret {
+    border-bottom: $fret-border;
+    border-right: none;
+    flex: none;
+  }
+
+  .dot {
+    left: 0;
+    margin-left: -12px;
+    margin-top: -12px;
+    top: 50%;
+    width: 24px;
+  }
+
+  .dot-double-top {
+    left: -100%;
   }
 }
-
-@include adjustFretSize(24);
