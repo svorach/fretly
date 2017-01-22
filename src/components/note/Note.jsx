@@ -1,18 +1,34 @@
 import React from 'react';
 
-function Note({ note, highlight }) {
+function Note({ note, highlight, showOnHighlight }) {
   const classList = ['note'];
+  const highlightNote = highlight(note);
 
-  if (highlight(note)) {
+  if (highlightNote) {
     classList.push('highlight');
   }
 
-  return <span className={classList.join(' ')}>{note}</span>;
+  if (showOnHighlight) {
+    classList.push('show-on-highlight');
+  }
+
+  const renderNote = () => {
+    let markup;
+
+    if (showOnHighlight && !highlightNote) {
+      return <span></span>;
+    }
+
+    return <span className={classList.join(' ')}>{note}</span>;;
+  }
+
+  return renderNote();
 }
 
 Note.propTypes = {
-  note: React.PropTypes.string,
-  highlight: React.PropTypes.func,
+  note: React.PropTypes.string.isRequired,
+  highlight: React.PropTypes.func.isRequired,
+  showOnHighlight: React.PropTypes.bool.isRequired,
 };
 
 export default Note;

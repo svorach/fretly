@@ -2,16 +2,17 @@ import React from 'react';
 import String from '../string/String.jsx';
 import { neck } from '../../utils/neckUtils';
 
-const Neck = ({ highlight }) => {
+const Neck = ({ highlight, showOnHighlight }) => {
   const mapStrings = (string, i) =>
-    <String data={string} highlight={highlight} key={`string-${i}`} />;
+    <String data={string} highlight={highlight} showOnHighlight={showOnHighlight} key={`string-${i}`} />;
   const getStrings = () => neck.map(mapStrings);
 
   return (<section className="neck">{getStrings()}</section>);
 };
 
 Neck.propTypes = {
-  highlight: React.PropTypes.func,
+  highlight: React.PropTypes.func.isRequired,
+  showOnHighlight: React.PropTypes.bool.isRequired,
 };
 
 export default Neck;

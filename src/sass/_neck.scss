@@ -59,6 +59,10 @@
   width: $note-size;
   z-index: 1;
   transition: transform .75s ease-in-out;
+
+  &.show-when-highlighted {
+    display: none;
+  }
   
   &.highlight {
     animation-duration: .75s;
@@ -66,6 +70,10 @@
     animation-timing-function: ease-in-out;
     background: $note-highlight;
     color: #fff;
+
+    &.show-when-highlighted {
+      display: block;
+    }
   }
 }
 

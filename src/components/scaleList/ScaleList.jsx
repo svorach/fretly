@@ -5,10 +5,13 @@ const mapScales = (scales, setScale) =>
   scales.map((scale, i) => <Scale scale={scale} setScale={setScale} key={`scale-${i}`} />);
 
 const ScaleList = ({ scales, setScale, clearScale }) =>
-  <ul className="scale-list">
-    {mapScales(scales, setScale)}
-    <li><a href="" onClick={clearScale}>Clear Selected Scale</a></li>
-  </ul>;
+  <div>
+    <h2>Scales</h2>
+    <ul className="scale-list">
+      {mapScales(scales, setScale)}
+      <li><a href="" onClick={clearScale}>Clear Selected Scale</a></li>
+    </ul>
+  </div>;
 
 ScaleList.propTypes = ({
   clearScale: React.PropTypes.func,
