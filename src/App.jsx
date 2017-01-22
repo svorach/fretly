@@ -5,6 +5,7 @@ import _ from 'lodash';
 import './sass/app.scss';
 import Neck from './components/neck/Neck.jsx';
 import ScaleList from './components/scaleList/ScaleList.jsx';
+import NoteFilterList from './components/note/NoteFilterList.jsx';
 import { scales } from './utils/noteUtils';
 import { SHOW_ONLY_HIGHLIGHTED_NOTES, SHOW_ALL_NOTES } from './constants/actions';
 import { SET_VISIBILITY_FILTER } from './constants/actionTypes';
@@ -67,12 +68,13 @@ class App extends React.Component {
   render() {
     const scale = this.state.scale;
     const showOnHighlight = this.state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
+    const filters = [SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES];
 
     return (
       <div id="container">
         <h1>Fretly</h1>
         <span>
-          A work in progress proudly crafted by
+          A work in progress proudly crafted by&nbsp;
           <a href="mailto:shane.vorachek@gmail.com">Shane Vorachek</a>
         </span>
 
@@ -83,17 +85,17 @@ class App extends React.Component {
           activeScale={scale}
         />
 
-        <h2>Filter</h2>
-        <form>
-          <label htmlFor="show-all">Show All Notes</label>
-          <input type="radio" name="set-visibility-filter" onClick={(e) => this.setVisibilityFilter(e, SHOW_ALL_NOTES)} />
-          <br />
-          <label htmlFor="show-scale-notes">Only Show Scale Notes</label>
-          <input type="radio" name="set-visibility-filter" onClick={(e) => this.setVisibilityFilter(e, SHOW_ONLY_HIGHLIGHTED_NOTES)} />
-        </form>
-        <br />
+        <NoteFilterList
+          setVisibilityFilter={this.setVisibilityFilter}
+          activeFilter={this.state.visibilityFilter}
+          filters={filters}
+        />
 
-        <Neck scale={scale} highlight={this.highlight} showOnHighlight={showOnHighlight} />
+        <Neck
+          scale={scale}
+          highlight={this.highlight}
+          showOnHighlight={showOnHighlight}
+        />
       </div>
     );
   }
