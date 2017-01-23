@@ -18,7 +18,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
-  padding: 20px 40px;
+  padding: 20px;
   text-transform: uppercase;
 }
 
@@ -37,11 +37,9 @@ a {
 
   &.active,
   &:hover {
-    color: $secondary;
-    border-color: $secondary;
+    color: $dark;
   }
 }
-
 
 ul {
   list-style: none;
@@ -57,6 +55,18 @@ li {
 
   &:last-child a {
     border-bottom: none;
+  }
+}
+
+.note-filters {
+  label {
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  & i.fa {
+    font-size: 20px;
+    vertical-align: bottom;
   }
 }
 

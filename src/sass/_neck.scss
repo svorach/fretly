@@ -9,9 +9,9 @@
 
 .neck {
   background: $fretboard-bg;
-  color: #fff;
-  height: 400px;
+  height: 360px;;
   position: relative;
+  width: 200%;
 }
 
 .string {
@@ -41,10 +41,6 @@
 
   &:first-child {
     background: $nut-color;
-
-    & > .note {
-      color: #fff;
-    }
   }
 }
 
@@ -73,7 +69,11 @@
     animation-duration: .75s;
     animation-name: note-entry;
     animation-timing-function: ease-in-out;
+    animation-duration: .75s;
+    animation-name: note-entry;
+    animation-timing-function: ease-in-out;
     background: $note-highlight;
+    box-shadow: 0 0px 10px $note-highlight;
     color: #fff;
 
     &.show-when-highlighted {
@@ -132,6 +132,23 @@
 
 @media (min-width: 880px) and (orientation: landscape) {
   @include adjustFretSize(24, false);
+
+  .string:nth-child(1) {
+    margin-top: 20px;
+  }
+  // fret markers
+  .string:nth-child(1) .fret::before {
+    content: attr(data-fret);
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    text-align: center;
+    top: -20px;
+    width: 20px;
+  }
 }
 
 @media screen and (max-width: 880px) and (orientation: landscape) {
@@ -143,6 +160,20 @@
 
 @media screen and (max-width: 880px) and (orientation: portrait) {
   @include adjustFretSize(24, true);
+  // fret markers
+  .string:nth-child(6) .fret::before {
+    content: attr(data-fret);
+    color: #fff;
+    display: block;
+    height: 20px;
+    font-weight: bold;
+    left: -25px;
+    margin-top: -10px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 20px;
+  }
 
   .neck-container {
     overflow-y: visible;
@@ -153,6 +184,7 @@
     flex-direction: row-reverse;
     height: 100%;
     margin: 0 auto;
+    width: 100%;
   }
   
   .string {

@@ -3,10 +3,15 @@ import Fret from '../fret/Fret.jsx';
 
 const String = ({ data, highlight, showOnHighlight }) => {
   const mapFrets = (fret, i) =>
-    <Fret note={fret} highlight={highlight} showOnHighlight={showOnHighlight} key={`fret-${i}`} />;
-  const getFrets = (string) => string.frets.map(mapFrets);
+    <Fret
+      fret={i}
+      note={fret}
+      highlight={highlight}
+      showOnHighlight={showOnHighlight}
+      key={`fret-${i}`}
+    />;
 
-  return (<div className="string">{getFrets(data)}</div>);
+  return (<div className="string">{data.frets.map(mapFrets)}</div>);
 };
 
 String.propTypes = {

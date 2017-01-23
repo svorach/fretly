@@ -15,7 +15,7 @@
     }
 
     .fret:first-child {
-      flex: 5;
+      flex: 10;
     }
   } @else {
     $mobile-max-fret-height: 180px;
@@ -28,12 +28,13 @@
         }
 
         @else {
-          flex: $mobile-min-fret-height;
+          height: $mobile-min-fret-height;
         }
       }
     }
 
     .fret:first-child {
+      height: auto;
       flex: $mobile-min-fret-height / 2;
     }
   }

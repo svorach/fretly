@@ -7,6 +7,7 @@ const scales = [
   { name: 'B Natural Minor', notes: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'] },
   { name: 'B Harmonic Minor', notes: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A#'] },
   { name: 'G Minor', notes: ['G', 'A', 'A#', 'C', 'D', 'D#', 'F'] },
+  { name: 'None', notes: [] },
 ];
 
 /**

@@ -5,7 +5,7 @@ import _ from 'lodash';
 import './sass/app.scss';
 import Neck from './components/neck/Neck.jsx';
 import ScaleList from './components/scaleList/ScaleList.jsx';
-import NoteFilterList from './components/note/NoteFilterList.jsx';
+import NoteFilter from './components/note/NoteFilter.jsx';
 import { scales } from './utils/noteUtils';
 import { SHOW_ONLY_HIGHLIGHTED_NOTES, SHOW_ALL_NOTES } from './constants/actions';
 import { SET_VISIBILITY_FILTER } from './constants/actionTypes';
@@ -24,7 +24,8 @@ class App extends React.Component {
     this.setScale = this.setScale.bind(this);
     this.highlight = this.highlight.bind(this);
     this.setVisibilityFilter = this.setVisibilityFilter.bind(this);
-    this.clearScale = this.clearScale.bind(this);
+
+    scales[0].active = true;
 
     this.state = {
       scale: scales[0],
@@ -55,12 +56,6 @@ class App extends React.Component {
     }
   }
 
-  clearScale(e) {
-    e.preventDefault();
-    this.deactivateScales();
-    this.setState({ scale: {} });
-  }
-
   highlight(note) {
     return (this.state.scale.notes.indexOf(note) !== -1);
   }
@@ -68,7 +63,7 @@ class App extends React.Component {
   render() {
     const scale = this.state.scale;
     const showOnHighlight = this.state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
-    const filters = [SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES];
+    const filters = { SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES };
 
     return (
       <div id="container">
@@ -85,7 +80,7 @@ class App extends React.Component {
           activeScale={scale}
         />
 
-        <NoteFilterList
+        <NoteFilter
           setVisibilityFilter={this.setVisibilityFilter}
           activeFilter={this.state.visibilityFilter}
           filters={filters}
@@ -103,7 +98,7 @@ class App extends React.Component {
 
 App.propTypes = {
   visibilityFilter: React.PropTypes.string,
-  scale: React.PropTypes.obj,
+  scale: React.PropTypes.object,
 };
 
 const render = () => {
