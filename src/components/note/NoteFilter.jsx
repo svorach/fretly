@@ -4,7 +4,12 @@ function NoteFilter({ setVisibilityFilter, activeFilter, filter }) {
   return (
     <div className="visibility-filter">
       <label htmlFor="filter">{filter}</label>
-      <input type="radio" name="set-visibility-filter" checked={activeFilter === filter} onClick={(e) => setVisibilityFilter(e, filter)} />
+      <input
+        type="radio"
+        name="set-visibility-filter"
+        checked={activeFilter === filter}
+        onChange={(e) => setVisibilityFilter(e, filter)}
+      />
     </div>
   );
 }

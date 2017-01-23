@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import '_vars';
 @import '_neck';
 
@@ -13,7 +14,7 @@ body {
 }
 
 body {
-  background: #fff;
+  background: $primary;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
@@ -22,7 +23,7 @@ body {
 }
 
 h1 {
-  color: $primary;
+  color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,0.25);
   font-size: 36px;
   font-weight: 700;
@@ -31,8 +32,7 @@ h1 {
 }
 
 a {
-  color: $primary;
-  border-bottom: 1px solid #ccc;
+  color: #fff;
   text-decoration: none;
 
   &.active,
@@ -57,5 +57,11 @@ li {
 
   &:last-child a {
     border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 880px) and (orientation: portrait) {
+  li {
+    display: block;
   }
 }

@@ -4,10 +4,18 @@ import { neck } from '../../utils/neckUtils';
 
 const Neck = ({ highlight, showOnHighlight }) => {
   const mapStrings = (string, i) =>
-    <String data={string} highlight={highlight} showOnHighlight={showOnHighlight} key={`string-${i}`} />;
-  const getStrings = () => neck.map(mapStrings);
+    <String
+      data={string}
+      highlight={highlight}
+      showOnHighlight={showOnHighlight}
+      key={`string-${i}`}
+    />;
 
-  return (<section className="neck">{getStrings()}</section>);
+  return (
+    <section className="neck-container">
+      <section className="neck">{neck.map(mapStrings)}</section>
+    </section>
+  );
 };
 
 Neck.propTypes = {

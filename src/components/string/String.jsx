@@ -2,7 +2,8 @@ import React from 'react';
 import Fret from '../fret/Fret.jsx';
 
 const String = ({ data, highlight, showOnHighlight }) => {
-  const mapFrets = (fret, i) => <Fret note={fret} highlight={highlight} showOnHighlight={showOnHighlight} key={`fret-${i}`} />;
+  const mapFrets = (fret, i) =>
+    <Fret note={fret} highlight={highlight} showOnHighlight={showOnHighlight} key={`fret-${i}`} />;
   const getFrets = (string) => string.frets.map(mapFrets);
 
   return (<div className="string">{getFrets(data)}</div>);

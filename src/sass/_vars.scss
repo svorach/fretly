@@ -1,12 +1,30 @@
-// colors
-$primary: rgba(40, 100, 140, 0.65);
-$secondary: #8461a5;
-$fretboard-bg: #484033;
+// Pennello https://color.adobe.com/Pennello-color-theme-9111250/
+$aa: #C15778;
+$bb: #1C676D;
+$cc: #52ADA0;
+$dd: #D9D0C7;
+$ee: #575F5B;
+
+// Mute Mint https://color.adobe.com/mute-mint-color-theme-9111446/
+
+
+$primary: #2F6D7A;
+$primary-light: #70A99A;
+$secondary: #d07451;
+$tertiary: #76d051;
+$secondary-alt: #B6D051;
+
+$dark: #1B1E26;
+$light: #D9D0C7;
+
+$primary: $primary;
+$secondary: $secondary-alt;
+$fretboard-bg: #59463E;
 $fretboard-bg: #cecece;
+$fretboard-bg: $light;
 
 // neck
-$nut-color: #b7b58c;
-$nut-color: #383838;
+$nut-color: $dark;
 
 //strings
 $string-count: 6;
@@ -21,7 +39,7 @@ $fret-border: 3px solid $fret-border-color;
 
 // notes
 $note-text: #3a3a3a;
-$note-highlight: $primary;
+$note-highlight: $secondary;
 $note-size: 30px;
 $note-text-size: 16px;
 

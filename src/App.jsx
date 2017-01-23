@@ -12,7 +12,7 @@ import { SET_VISIBILITY_FILTER } from './constants/actionTypes';
 import fretly from './reducers/fretly';
 import visibilityFilter from './reducers/visibilityFilter';
 
-import { combineReducers, createStore } from 'redux'
+import { combineReducers, createStore } from 'redux';
 
 const reducer = combineReducers({ visibilityFilter, fretly });
 const store = createStore(reducer);
@@ -22,12 +22,12 @@ class App extends React.Component {
     super(props);
 
     this.setScale = this.setScale.bind(this);
-    this.clearScale = this.clearScale.bind(this);
     this.highlight = this.highlight.bind(this);
     this.setVisibilityFilter = this.setVisibilityFilter.bind(this);
+    this.clearScale = this.clearScale.bind(this);
 
     this.state = {
-      scale: {},
+      scale: scales[0],
       visibilityFilter: props.visibilityFilter,
     };
   }
@@ -38,10 +38,13 @@ class App extends React.Component {
     this.setState({ scale: Object.assign(scale, { active: true }) });
   }
 
-  clearScale(e) {
-    e.preventDefault();
-    this.deactivateScales();
-    this.setState({ scale: {} });
+  setVisibilityFilter(e, filter) {
+    const action = { type: SET_VISIBILITY_FILTER, filter };
+
+    store.dispatch(action);
+    this.setState({
+      visibilityFilter: store.getState().visibilityFilter,
+    });
   }
 
   deactivateScales() {
@@ -52,17 +55,14 @@ class App extends React.Component {
     }
   }
 
-  highlight(note) {
-    return (_.indexOf(this.state.scale.notes, note) !== -1);
+  clearScale(e) {
+    e.preventDefault();
+    this.deactivateScales();
+    this.setState({ scale: {} });
   }
 
-  setVisibilityFilter(e, filter) {
-    const action = { type: SET_VISIBILITY_FILTER, filter: filter };
-
-    store.dispatch(action);
-    this.setState({
-      visibilityFilter: store.getState().visibilityFilter,
-    });
+  highlight(note) {
+    return (this.state.scale.notes.indexOf(note) !== -1);
   }
 
   render() {
@@ -101,6 +101,11 @@ class App extends React.Component {
   }
 }
 
+App.propTypes = {
+  visibilityFilter: React.PropTypes.string,
+  scale: React.PropTypes.obj,
+};
+
 const render = () => {
   ReactDOM.render(
     <App {...store.getState()} />,
@@ -108,6 +113,6 @@ const render = () => {
   );
 };
 
-const unsubscribe = store.subscribe(render);
+store.subscribe(render);
 
 render();

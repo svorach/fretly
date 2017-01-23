@@ -13,14 +13,12 @@ function Note({ note, highlight, showOnHighlight }) {
   }
 
   const renderNote = () => {
-    let markup;
-
     if (showOnHighlight && !highlightNote) {
       return <span></span>;
     }
 
-    return <span className={classList.join(' ')}>{note}</span>;;
-  }
+    return <span className={classList.join(' ')}>{note}</span>;
+  };
 
   return renderNote();
 }

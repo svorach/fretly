@@ -2,7 +2,11 @@ import React from 'react';
 import Note from '../note/Note.jsx';
 
 function Fret({ note, highlight, showOnHighlight }) {
-  return (<div className="fret"><Note note={note} highlight={highlight} showOnHighlight={showOnHighlight} /></div>);
+  return (
+    <div className="fret">
+      <Note note={note} highlight={highlight} showOnHighlight={showOnHighlight} />
+    </div>
+  );
 }
 
 Fret.propTypes = {

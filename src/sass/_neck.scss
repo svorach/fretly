@@ -2,6 +2,11 @@
 @import '_mixins';
 @import '_animations';
 
+.neck-container {
+  width: 100%;
+  overflow-y: auto;
+}
+
 .neck {
   background: $fretboard-bg;
   color: #fff;
@@ -125,12 +130,23 @@
   @extend .dot-double-bot;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 880px) and (orientation: landscape) {
   @include adjustFretSize(24, false);
 }
 
-@media (max-width: 1200px) {
+@media screen and (max-width: 880px) and (orientation: landscape) {
+  .neck {
+    height: 200px;
+    width: 200%;
+  }
+}
+
+@media screen and (max-width: 880px) and (orientation: portrait) {
   @include adjustFretSize(24, true);
+
+  .neck-container {
+    overflow-y: visible;
+  }
 
   .neck {
     display: flex;

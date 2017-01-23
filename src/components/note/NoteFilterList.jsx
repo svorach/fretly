@@ -1,9 +1,15 @@
 import React from 'react';
 import NoteFilter from './NoteFilter.jsx';
 
-const mapNoteFilters = (setVisibilityFilter, activeFilter, filters) => 
+const mapNoteFilters = (setVisibilityFilter, activeFilter, filters) =>
   filters.map((filter, i) =>
-    <NoteFilter setVisibilityFilter={setVisibilityFilter} activeFilter={activeFilter} filter={filter} key={'filter' + i} />);
+    <NoteFilter
+      setVisibilityFilter={setVisibilityFilter}
+      activeFilter={activeFilter}
+      filter={filter}
+      key={`filter-${i}`}
+    />
+  );
 
 function NoteFilterList({ setVisibilityFilter, activeFilter, filters }) {
   return (
