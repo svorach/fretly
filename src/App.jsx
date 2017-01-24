@@ -21,6 +21,7 @@ import {
 } from './constants/actionTypes';
 
 import { combineReducers, createStore } from 'redux';
+import { connect } from 'react-redux';
 
 const reducer = combineReducers({ activeScale, scales, visibilityFilter });
 const store = createStore(reducer);
@@ -62,8 +63,10 @@ class App extends React.Component {
   }
 
   render() {
-    const showOnHighlight = this.state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
+    const state = store.getState();
+    const showOnHighlight = state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
     const filters = { SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES };
+
     return (
       <div id="container">
         <h1>Fretly</h1>
@@ -73,15 +76,15 @@ class App extends React.Component {
         </span>
 
         <ScaleList
-          scales={this.state.scales}
+          scales={state.scales}
           setActiveScale={this.setActiveScale}
           clearScale={this.clearScale}
-          activeScale={this.state.activeScale}
+          activeScale={state.activeScale}
         />
 
         <NoteFilter
           setVisibilityFilter={this.setVisibilityFilter}
-          visibilityFilter={this.state.visibilityFilter}
+          visibilityFilter={state.visibilityFilter}
           filters={filters}
         />
 
