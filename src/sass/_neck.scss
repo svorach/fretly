@@ -134,7 +134,7 @@
   @extend .dot-double-bot;
 }
 
-@media (min-width: 880px) and (orientation: landscape) {
+@media (min-width: 680px) and (orientation: landscape) {
   @include adjustFretSize(24, false);
 
   .string:nth-child(1) {
@@ -155,14 +155,18 @@
   }
 }
 
-@media screen and (max-width: 1400px) and (orientation: landscape) {
+@media screen and (max-width: 1337px) and (orientation: landscape) {
+  @include adjustFretSize(24, false);
+
   .neck {
     height: 300px;
     width: 200%;
   }
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
+@media screen and (max-width: 680px) and (orientation: landscape) {
+  @include adjustFretSize(24, true);
+
   .neck {
     height: 80vh;
     width: 200%;
@@ -175,7 +179,7 @@
   }
 }
 
-@media screen and (max-width: 880px) and (orientation: portrait) {
+@media screen and (max-width: 680px) and (orientation: portrait) {
   @include adjustFretSize(24, true);
   // fret markers
   .string:nth-child(6) .fret::before {

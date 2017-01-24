@@ -54,7 +54,8 @@ a {
 
   &.active,
   &:hover,
-  &.setting:hover {
+  &.setting:hover,
+  &[href^='mailto'] {
     color: #fff;
   }
 }
@@ -88,7 +89,7 @@ li {
   }
 }
 
-@media screen and (max-width: 880px) and (orientation: portrait) {
+@media screen and (max-width: 680px) and (orientation: portrait) {
   body {
     background: $background-portait;
   }
@@ -98,7 +99,7 @@ li {
   }
 }
 
-@media screen and (max-width: 880px) and (orientation: landscape) {
+@media screen and (max-width: 680px) and (orientation: landscape) {
   body {
     background: $background-landscape-sm;
   }
