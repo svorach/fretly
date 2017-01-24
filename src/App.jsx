@@ -72,13 +72,18 @@ class App extends React.Component {
     const filters = { SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES };
 
     const getTunings = () =>
-      tunings.map((tuning, i) =>
-        <li key={`tuning-${i}`}>
-          <a href="#" onClick={(e) => this.setTuning(e, tuning)}>
-            {tuning.name}
-          </a>
-        </li>
-      );
+      tunings.map((tuning, i) => {
+        const className = state.tuning.name === tuning.name ? 'active' : '';
+        return (
+          <li key={`tuning-${i}`}>
+            <a href="#" className={className} onClick={(e) => this.setTuning(e, tuning)}>
+              {tuning.name}
+            </a>
+          </li>
+        );
+      });
+
+    console.log(state.tuning.strings);
 
     return (
       <div id="container">

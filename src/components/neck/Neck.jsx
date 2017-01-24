@@ -18,7 +18,7 @@ const Neck = ({ strings, highlight, showOnHighlight }) => {
 };
 
 Neck.propTypes = {
-  strings: React.PropTypes.array.isRequred,
+  strings: React.PropTypes.array.isRequired,
   highlight: React.PropTypes.func.isRequired,
   showOnHighlight: React.PropTypes.bool.isRequired,
 };
