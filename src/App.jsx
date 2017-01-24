@@ -8,6 +8,7 @@ import NoteFilter from './components/note/NoteFilter.jsx';
 import activeScale from './reducers/activeScale';
 import scales from './reducers/scales';
 import visibilityFilter from './reducers/visibilityFilter';
+import neck from './reducers/neck';
 
 import {
   SHOW_ONLY_HIGHLIGHTED_NOTES,
@@ -17,11 +18,13 @@ import {
 import {
   SET_VISIBILITY_FILTER,
   SET_ACTIVE_SCALE,
+  SET_STRINGS,
 } from './constants/actionTypes';
 
+import { TUNINGS as tunings } from './constants/tunings';
 import { combineReducers, createStore } from 'redux';
 
-const reducer = combineReducers({ activeScale, scales, visibilityFilter });
+const reducer = combineReducers({ neck, activeScale, scales, visibilityFilter });
 const store = createStore(reducer);
 
 class App extends React.Component {
@@ -31,8 +34,10 @@ class App extends React.Component {
     this.setActiveScale = this.setActiveScale.bind(this);
     this.highlight = this.highlight.bind(this);
     this.setVisibilityFilter = this.setVisibilityFilter.bind(this);
+    this.setTuning = this.setTuning.bind(this);
 
     this.state = {
+      neck: props.neck,
       activeScale: props.activeScale,
       scales: props.scales,
       visibilityFilter: props.visibilityFilter,
@@ -45,6 +50,13 @@ class App extends React.Component {
       type: SET_ACTIVE_SCALE,
       scale: scaleToSet,
     };
+
+    store.dispatch(action);
+  }
+
+  setTuning(e, tuning) {
+    e.preventDefault();
+    const action = { type: SET_STRINGS, tuning };
 
     store.dispatch(action);
   }
@@ -64,6 +76,15 @@ class App extends React.Component {
     const state = store.getState();
     const showOnHighlight = state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
     const filters = { SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES };
+
+    const getTunings = () =>
+      tunings.map((tuning, i) =>
+        <li key={`tuning-${i}`}>
+          <a href="#" onClick={(e) => this.setTuning(e, tuning)}>
+            {tuning.name}
+          </a>
+        </li>
+      );
 
     return (
       <div id="container">
@@ -86,7 +107,12 @@ class App extends React.Component {
           filters={filters}
         />
 
+        <ul>
+          {getTunings()}
+        </ul>
+
         <Neck
+          strings={state.neck.strings}
           activeScale={this.activeScale}
           highlight={this.highlight}
           showOnHighlight={showOnHighlight}
@@ -97,6 +123,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  neck: React.PropTypes.object,
   visibilityFilter: React.PropTypes.string,
   activeScale: React.PropTypes.object,
   scales: React.PropTypes.array,

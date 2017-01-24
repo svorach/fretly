@@ -1,16 +1,6 @@
-
 import { getFretNote } from './noteUtils';
 
 const frets = [...Array(25).keys()];
-const tuning = [
-  { stringNumber: 1, rootNote: 'E' },
-  { stringNumber: 2, rootNote: 'B' },
-  { stringNumber: 3, rootNote: 'G' },
-  { stringNumber: 4, rootNote: 'D' },
-  { stringNumber: 5, rootNote: 'A' },
-  { stringNumber: 6, rootNote: 'E' },
-  // { stringNumber: 7, rootNote: 'B' },
-];
 
 function mapNotesToFrets(string) {
   return frets.map((fret) => getFretNote(string.rootNote, fret));
@@ -22,10 +12,8 @@ function buildFrets(string) {
   return Object.assign({}, { frets: builtFrets }, string);
 }
 
-function buildNeck() {
-  return tuning.map(buildFrets);
+function buildStrings(strings) {
+  return strings.map(buildFrets);
 }
 
-const neck = buildNeck();
-
-export { frets, tuning, buildNeck, neck };
+export { frets, buildStrings };

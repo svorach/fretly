@@ -1,3 +1,6 @@
+// neck
+export const SET_STRINGS = 'SET_STRINGS';
+
 // visibility filter
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
