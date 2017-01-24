@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Scale = ({ scale, setScale }) =>
+const Scale = ({ scale, activeScale, setActiveScale }) =>
   <li>
     <a
       href="#"
-      className={scale.active ? 'active' : ''}
-      onClick={(e) => setScale(e, scale)}
+      className={scale.name === activeScale.name ? 'active' : ''}
+      onClick={(e) => setActiveScale(e, scale)}
     >
       {scale.name}
     </a>
@@ -13,7 +13,8 @@ const Scale = ({ scale, setScale }) =>
 
 Scale.propTypes = ({
   scale: React.PropTypes.object,
-  setScale: React.PropTypes.func,
+  activeScale: React.PropTypes.object,
+  setActiveScale: React.PropTypes.func,
 });
 
 export default Scale;

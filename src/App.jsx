@@ -6,65 +6,64 @@ import './sass/app.scss';
 import Neck from './components/neck/Neck.jsx';
 import ScaleList from './components/scaleList/ScaleList.jsx';
 import NoteFilter from './components/note/NoteFilter.jsx';
-import { scales } from './utils/noteUtils';
-import { SHOW_ONLY_HIGHLIGHTED_NOTES, SHOW_ALL_NOTES } from './constants/actions';
-import { SET_VISIBILITY_FILTER } from './constants/actionTypes';
-import fretly from './reducers/fretly';
+import activeScale from './reducers/activeScale';
+import scales from './reducers/scales';
 import visibilityFilter from './reducers/visibilityFilter';
+
+import {
+  SHOW_ONLY_HIGHLIGHTED_NOTES,
+  SHOW_ALL_NOTES,
+} from './constants/actions';
+
+import {
+  SET_VISIBILITY_FILTER,
+  SET_ACTIVE_SCALE,
+} from './constants/actionTypes';
 
 import { combineReducers, createStore } from 'redux';
 
-const reducer = combineReducers({ visibilityFilter, fretly });
+const reducer = combineReducers({ activeScale, scales, visibilityFilter });
 const store = createStore(reducer);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.setScale = this.setScale.bind(this);
+    this.setActiveScale = this.setActiveScale.bind(this);
     this.highlight = this.highlight.bind(this);
     this.setVisibilityFilter = this.setVisibilityFilter.bind(this);
 
-    scales[0].active = true;
-
     this.state = {
-      scale: scales[0],
+      activeScale: props.activeScale,
+      scales: props.scales,
       visibilityFilter: props.visibilityFilter,
     };
   }
 
-  setScale(e, scale) {
+  setActiveScale(e, scaleToSet) {
     e.preventDefault();
-    this.deactivateScales();
-    this.setState({ scale: Object.assign(scale, { active: true }) });
+    const action = {
+      type: SET_ACTIVE_SCALE,
+      scale: scaleToSet,
+    };
+
+    store.dispatch(action);
   }
 
   setVisibilityFilter(e, filter) {
+    e.preventDefault();
     const action = { type: SET_VISIBILITY_FILTER, filter };
 
     store.dispatch(action);
-    this.setState({
-      visibilityFilter: store.getState().visibilityFilter,
-    });
-  }
-
-  deactivateScales() {
-    const activeScale = _.find(scales, { active: true });
-
-    if (activeScale) {
-      activeScale.active = false;
-    }
   }
 
   highlight(note) {
-    return (this.state.scale.notes.indexOf(note) !== -1);
+    return (store.getState().activeScale.notes.indexOf(note) !== -1);
   }
 
   render() {
-    const scale = this.state.scale;
     const showOnHighlight = this.state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
     const filters = { SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES };
-
     return (
       <div id="container">
         <h1>Fretly</h1>
@@ -74,20 +73,20 @@ class App extends React.Component {
         </span>
 
         <ScaleList
-          scales={scales}
-          setScale={this.setScale}
+          scales={this.state.scales}
+          setActiveScale={this.setActiveScale}
           clearScale={this.clearScale}
-          activeScale={scale}
+          activeScale={this.state.activeScale}
         />
 
         <NoteFilter
           setVisibilityFilter={this.setVisibilityFilter}
-          activeFilter={this.state.visibilityFilter}
+          visibilityFilter={this.state.visibilityFilter}
           filters={filters}
         />
 
         <Neck
-          scale={scale}
+          activeScale={this.activeScale}
           highlight={this.highlight}
           showOnHighlight={showOnHighlight}
         />
@@ -98,7 +97,8 @@ class App extends React.Component {
 
 App.propTypes = {
   visibilityFilter: React.PropTypes.string,
-  scale: React.PropTypes.object,
+  activeScale: React.PropTypes.object,
+  scales: React.PropTypes.array,
 };
 
 const render = () => {

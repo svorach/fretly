@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { notes, scales, getNoteMap, getIndexMap } from '../../src/utils/noteUtils';
+import { NOTES as notes, scales, getNoteMap, getIndexMap } from '../../src/utils/noteUtils';
 
 describe('noteUtils', () => {
   describe('getNotes', () => {

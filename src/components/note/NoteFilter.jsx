@@ -1,11 +1,12 @@
 import React from 'react';
 
-function NoteFilter({ setVisibilityFilter, activeFilter, filters }) {
+function NoteFilter({ setVisibilityFilter, visibilityFilter, filters }) {
   function getToggleButton() {
-    if (activeFilter === filters.SHOW_ONLY_HIGHLIGHTED_NOTES) {
+    if (visibilityFilter === filters.SHOW_ONLY_HIGHLIGHTED_NOTES) {
       return (
         <span>
           <a href="#" onClick={(e) => setVisibilityFilter(e, filters.SHOW_ALL_NOTES)}>
+            Show All Notes&nbsp;
             <i className="fa fa-toggle-off"></i>
           </a>
         </span>
@@ -15,6 +16,7 @@ function NoteFilter({ setVisibilityFilter, activeFilter, filters }) {
     return (
       <span>
         <a href="#" onClick={(e) => setVisibilityFilter(e, filters.SHOW_ONLY_HIGHLIGHTED_NOTES)}>
+          Show All Notes&nbsp;
           <i className="fa fa-toggle-on"></i>
         </a>
       </span>
@@ -24,9 +26,8 @@ function NoteFilter({ setVisibilityFilter, activeFilter, filters }) {
   return (
     <div className="note-filters">
       <h2>Filter</h2>
-      <label htmlFor="filter">Show All Notes</label>&nbsp;
 
-      {getToggleButton(activeFilter)}
+      {getToggleButton(visibilityFilter)}
       <br /><br />
     </div>
   );
@@ -34,7 +35,7 @@ function NoteFilter({ setVisibilityFilter, activeFilter, filters }) {
 
 NoteFilter.propTypes = {
   setVisibilityFilter: React.PropTypes.func.isRequired,
-  activeFilter: React.PropTypes.string.isRequired,
+  visibilityFilter: React.PropTypes.string.isRequired,
   filters: React.PropTypes.object.isRequired,
 };
 
