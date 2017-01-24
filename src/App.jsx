@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash';
 
 import './sass/app.scss';
 import Neck from './components/neck/Neck.jsx';
@@ -21,7 +20,6 @@ import {
 } from './constants/actionTypes';
 
 import { combineReducers, createStore } from 'redux';
-import { connect } from 'react-redux';
 
 const reducer = combineReducers({ activeScale, scales, visibilityFilter });
 const store = createStore(reducer);

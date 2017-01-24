@@ -1,7 +1,7 @@
 {
-  "name": "Fretly",
-  "version": "0.0.1",
-  "description": "Lightweight HTML Fretboard Visualizer",
+  "name": "fretly",
+  "version": "0.0.8",
+  "description": "HTML Fretboard Visualizer",
   "main": "webpack.config.js",
   "scripts": {
     "test:watch": "mocha -w test/helpers/browser.js test/**/*.spec.js",
