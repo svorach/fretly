@@ -165,7 +165,7 @@
 }
 
 @media screen and (max-width: 680px) and (orientation: landscape) {
-  @include adjustFretSize(24, true);
+  @include adjustFretSize(24, false);
 
   .neck {
     height: 80vh;
@@ -180,7 +180,6 @@
 }
 
 @media screen and (max-width: 680px) and (orientation: portrait) {
-
   .neck-container {
     overflow: inherit;
   }
