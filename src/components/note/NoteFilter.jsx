@@ -5,7 +5,11 @@ function NoteFilter({ setVisibilityFilter, visibilityFilter, filters }) {
     if (visibilityFilter === filters.SHOW_ONLY_HIGHLIGHTED_NOTES) {
       return (
         <span>
-          <a href="#" onClick={(e) => setVisibilityFilter(e, filters.SHOW_ALL_NOTES)}>
+          <a
+            href="#"
+            className="setting"
+            onClick={(e) => setVisibilityFilter(e, filters.SHOW_ALL_NOTES)}
+          >
             Show All Notes&nbsp;
             <i className="fa fa-toggle-off"></i>
           </a>
@@ -15,7 +19,11 @@ function NoteFilter({ setVisibilityFilter, visibilityFilter, filters }) {
 
     return (
       <span>
-        <a href="#" onClick={(e) => setVisibilityFilter(e, filters.SHOW_ONLY_HIGHLIGHTED_NOTES)}>
+        <a
+          href="#"
+          className="setting active"
+          onClick={(e) => setVisibilityFilter(e, filters.SHOW_ONLY_HIGHLIGHTED_NOTES)}
+        >
           Show All Notes&nbsp;
           <i className="fa fa-toggle-on"></i>
         </a>

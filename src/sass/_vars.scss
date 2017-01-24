@@ -1,23 +1,22 @@
-// Pennello https://color.adobe.com/Pennello-color-theme-9111250/
-$aa: #C15778;
-$bb: #1C676D;
-$cc: #52ADA0;
-$dd: #D9D0C7;
-$ee: #575F5B;
+$primary: #dc6065;
+$primary: #1abc9c;
+$background: #9bbcc3;
+$background: linear-gradient(180deg, #0ebfac 0%, #3c7ff5 30%, #5f44e8 75%);
+$background-landscape: linear-gradient(90deg, #229ccc 0%, #1f193c 75%);
+$background-portait: linear-gradient(-180deg, #229ccc 0%, #1f193c 75%);
+$background-landscape-sm: linear-gradient(90deg, #229ccc 0%, #1f193c 155%);
 
-$primary: #297b8c;
-$secondary: #de683a;
-$tertiary: #76d051;
-$secondary-alt: #B6D051;
+$flat: linear-gradient(90deg, #1abc9c 15%, #2ecc71 15%, #2ecc71 12%, #3498db 12%, #3498db 32%, #9b59b6 32%, #9b59b6 35%, #34495e 35%, #34495e 55%, #f1c40f 55%, #f1c40f 59%, #e67e22 59%, #e67e22 63%, #e74c3c 63%, #e74c3c 82%, #ecf0f1 82%, #ecf0f1 92%, #95a5a6 92%);
 
-$dark: #1B1E26;
+$dark: #1f193c;
 $light: #D9D0C7;
+$highlight: #229ccc;
 
-$primary: $primary;
-$secondary: $secondary;
 $fretboard-bg: #59463E;
 $fretboard-bg: #cecece;
 $fretboard-bg: $light;
+
+$text-color: $dark;
 
 // neck
 $nut-color: $dark;
@@ -34,8 +33,8 @@ $fret-border-color: #969696;
 $fret-border: 3px solid $fret-border-color;
 
 // notes
-$note-text: #3a3a3a;
-$note-highlight: $secondary;
+$note-text: $text-color;
+$note-highlight: $primary;
 $note-size: 30px;
 $note-text-size: 16px;
 
