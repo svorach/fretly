@@ -5,10 +5,8 @@ import './sass/app.scss';
 import Neck from './components/neck/Neck.jsx';
 import ScaleList from './components/scaleList/ScaleList.jsx';
 import NoteFilter from './components/note/NoteFilter.jsx';
-import activeScale from './reducers/activeScale';
-import scales from './reducers/scales';
-import visibilityFilter from './reducers/visibilityFilter';
-import neck from './reducers/neck';
+
+import { store } from './store';
 
 import {
   SHOW_ONLY_HIGHLIGHTED_NOTES,
@@ -22,10 +20,6 @@ import {
 } from './constants/actionTypes';
 
 import { TUNINGS as tunings } from './constants/tunings';
-import { combineReducers, createStore } from 'redux';
-
-const reducer = combineReducers({ neck, activeScale, scales, visibilityFilter });
-const store = createStore(reducer);
 
 class App extends React.Component {
   constructor(props) {
@@ -37,7 +31,7 @@ class App extends React.Component {
     this.setTuning = this.setTuning.bind(this);
 
     this.state = {
-      neck: props.neck,
+      tuning: props.tuning,
       activeScale: props.activeScale,
       scales: props.scales,
       visibilityFilter: props.visibilityFilter,
@@ -112,7 +106,7 @@ class App extends React.Component {
         </ul>
 
         <Neck
-          strings={state.neck.strings}
+          strings={state.tuning.strings}
           activeScale={this.activeScale}
           highlight={this.highlight}
           showOnHighlight={showOnHighlight}
@@ -123,7 +117,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  neck: React.PropTypes.object,
+  tuning: React.PropTypes.object,
   visibilityFilter: React.PropTypes.string,
   activeScale: React.PropTypes.object,
   scales: React.PropTypes.array,
