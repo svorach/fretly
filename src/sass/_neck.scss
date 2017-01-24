@@ -3,7 +3,7 @@
 @import '_animations';
 
 .neck-container {
-  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .neck {
@@ -180,6 +180,11 @@
 }
 
 @media screen and (max-width: 680px) and (orientation: portrait) {
+
+  .neck-container {
+    overflow: inherit;
+  }
+
   @include adjustFretSize(24, true);
   // fret markers
   .string:nth-child(6) .fret::before {
