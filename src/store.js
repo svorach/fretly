@@ -1,4 +1,4 @@
 import { createStore } from 'redux';
-import { reducer } from './reducers/rootReducer';
+import { fretly } from './reducers/fretly';
 
-export const store = createStore(reducer);
+export const store = createStore(fretly);
