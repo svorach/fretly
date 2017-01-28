@@ -106,6 +106,7 @@ class App extends React.Component {
           filters={filters}
         />
 
+        <h2>Tunings</h2>
         <ul>
           {getTunings()}
         </ul>

@@ -1,5 +1,5 @@
-const OCTAVE_SEMITONE_COUNT = 12;
 const NOTES = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+const OCTAVE_SEMITONE_COUNT = NOTES.length;
 
 /**
  * returns a map that allows for note lookup by index
