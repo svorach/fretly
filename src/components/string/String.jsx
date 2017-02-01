@@ -1,13 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Fret from '../fret/Fret.jsx';
 
-const String = ({ data, highlight, showOnHighlight }) => {
+const String = ({ data, rootNote, highlight, showOnHighlight, selectNote, isNoteSelected }) => {
   const mapFrets = (fret, i) =>
     <Fret
       fret={i}
       note={fret}
       highlight={highlight}
       showOnHighlight={showOnHighlight}
+      selectNote={selectNote}
+      isNoteSelected={isNoteSelected}
+      isRootNote={fret === rootNote}
       key={`fret-${i}`}
     />;
 
@@ -15,9 +19,12 @@ const String = ({ data, highlight, showOnHighlight }) => {
 };
 
 String.propTypes = {
-  data: React.PropTypes.object,
-  highlight: React.PropTypes.func.isRequired,
-  showOnHighlight: React.PropTypes.bool.isRequired,
+  data: PropTypes.object,
+  rootNote: PropTypes.string,
+  highlight: PropTypes.func.isRequired,
+  showOnHighlight: PropTypes.bool.isRequired,
+  selectNote: PropTypes.func.isRequired,
+  isNoteSelected: PropTypes.func.isRequired,
 };
 
 export default String;

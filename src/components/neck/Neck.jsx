@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import String from '../string/String.jsx';
 
-const Neck = ({ strings, highlight, showOnHighlight }) => {
+const Neck = ({ strings, rootNote, highlight, showOnHighlight, selectNote, isNoteSelected }) => {
   const mapStrings = (string, i) =>
     <String
       data={string}
       highlight={highlight}
+      selectNote={selectNote}
+      rootNote={rootNote}
       showOnHighlight={showOnHighlight}
+      isNoteSelected={isNoteSelected}
       key={`string-${i}`}
     />;
 
@@ -18,9 +22,12 @@ const Neck = ({ strings, highlight, showOnHighlight }) => {
 };
 
 Neck.propTypes = {
-  strings: React.PropTypes.array.isRequired,
-  highlight: React.PropTypes.func.isRequired,
-  showOnHighlight: React.PropTypes.bool.isRequired,
+  strings: PropTypes.array.isRequired,
+  rootNote: PropTypes.string,
+  highlight: PropTypes.func.isRequired,
+  showOnHighlight: PropTypes.bool.isRequired,
+  selectNote: PropTypes.func.isRequired,
+  isNoteSelected: PropTypes.func.isRequired,
 };
 
 export default Neck;

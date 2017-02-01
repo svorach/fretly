@@ -1,19 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Note from '../note/Note.jsx';
 
-function Fret({ fret, note, highlight, showOnHighlight }) {
+function Fret({ fret, note, highlight, showOnHighlight, selectNote, isNoteSelected, isRootNote }) {
   return (
     <div className="fret" data-fret={fret}>
-      <Note note={note} highlight={highlight} showOnHighlight={showOnHighlight} />
+      <Note
+        note={note}
+        highlight={highlight}
+        showOnHighlight={showOnHighlight}
+        selectNote={selectNote}
+        isNoteSelected={isNoteSelected}
+        isRootNote={isRootNote}
+      />
     </div>
   );
 }
 
 Fret.propTypes = {
-  fret: React.PropTypes.number.isRequired,
-  note: React.PropTypes.string.isRequired,
-  highlight: React.PropTypes.func.isRequired,
-  showOnHighlight: React.PropTypes.bool.isRequired,
+  fret: PropTypes.number.isRequired,
+  note: PropTypes.string.isRequired,
+  highlight: PropTypes.func.isRequired,
+  showOnHighlight: PropTypes.bool.isRequired,
+  selectNote: PropTypes.func.isRequired,
+  isNoteSelected: PropTypes.func.isRequired,
+  isRootNote: PropTypes.bool,
 };
 
 export default Fret;

@@ -18,7 +18,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: $text-color;
-  font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
+  font-family: 'Fira Mono', 'Input Mono', Menlo, Consolas, monospace;
   font-weight: 500;
   padding: 20px;
   text-transform: uppercase;
@@ -87,6 +87,14 @@ li {
     font-size: 20px;
     vertical-align: bottom;
   }
+}
+
+ul.open {
+  display: block;
+}
+
+ul.collapsed {
+  display: none;
 }
 
 @media screen and (max-width: 680px) and (orientation: portrait) {

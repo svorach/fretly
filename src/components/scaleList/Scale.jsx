@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Scale = ({ scale, activeScale, setActiveScale }) =>
   <li>
@@ -12,9 +13,9 @@ const Scale = ({ scale, activeScale, setActiveScale }) =>
   </li>;
 
 Scale.propTypes = ({
-  scale: React.PropTypes.object,
-  activeScale: React.PropTypes.object,
-  setActiveScale: React.PropTypes.func,
+  scale: PropTypes.object,
+  activeScale: PropTypes.object,
+  setActiveScale: PropTypes.func,
 });
 
 export default Scale;

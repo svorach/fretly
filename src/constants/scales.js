@@ -1,3 +1,13 @@
+import tonal from 'tonal';
+
+
+const mapScales = (mode) => {
+  const modeObj = { name: mode };
+
+  return modeObj;
+};
+
+
 export const SCALES = [
   { name: 'D Major', notes: ['D', 'E', 'F#', 'G', 'A', 'B', 'C♯'] },
   { name: 'C Major (Ionian)', notes: ['C', 'D', 'E', 'F', 'G', 'A', 'B'] },
@@ -7,3 +17,6 @@ export const SCALES = [
   { name: 'G Minor', notes: ['G', 'A', 'A#', 'C', 'D', 'D#', 'F'] },
   { name: 'None', notes: [] },
 ];
+
+export const TRADITIONAL_MODES = tonal.scale.names().slice(1, 8).map(mapScales);
+export const MODES = tonal.scale.names().map(mapScales);

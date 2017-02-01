@@ -2,12 +2,23 @@ export const TUNINGS = [
   {
     name: 'Standard',
     strings: [
-      { stringNumber: 1, rootNote: 'E' },
-      { stringNumber: 2, rootNote: 'B' },
-      { stringNumber: 3, rootNote: 'G' },
-      { stringNumber: 4, rootNote: 'D' },
-      { stringNumber: 5, rootNote: 'A' },
-      { stringNumber: 6, rootNote: 'E' },
+      { stringNumber: 1, rootNote: 'E', octave: 4 },
+      { stringNumber: 2, rootNote: 'B', octave: 3 },
+      { stringNumber: 3, rootNote: 'G', octave: 3 },
+      { stringNumber: 4, rootNote: 'D', octave: 3 },
+      { stringNumber: 5, rootNote: 'A', octave: 2 },
+      { stringNumber: 6, rootNote: 'E', octave: 2 },
+    ],
+  },
+  {
+    name: 'Architects',
+    strings: [
+      { stringNumber: 1, rootNote: 'C#' },
+      { stringNumber: 2, rootNote: 'G#' },
+      { stringNumber: 3, rootNote: 'E' },
+      { stringNumber: 4, rootNote: 'B' },
+      { stringNumber: 5, rootNote: 'F#' },
+      { stringNumber: 6, rootNote: 'G#' },
     ],
   },
   {

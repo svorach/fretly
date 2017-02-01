@@ -7,7 +7,7 @@ const defaultTuning = {
   strings: buildStrings(tunings[0].strings),
 };
 
-function tuning(state = defaultTuning, action) {
+const tuning = (state = defaultTuning, action) => {
   switch (action.type) {
     case SET_STRINGS:
       return {
@@ -17,6 +17,6 @@ function tuning(state = defaultTuning, action) {
     default:
       return state;
   }
-}
+};
 
 export default tuning;

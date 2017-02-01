@@ -1,5 +1,30 @@
 const NOTES = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
-const NOTES_FLAT = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'];
+
+const FLAT_TO_SHARP_MAP = {
+  Ab: 'G#',
+  Bb: 'A#',
+  Cb: 'B',
+  Db: 'C#',
+  Eb: 'D#',
+  Fb: 'E',
+  Gb: 'F#',
+};
+
+const DOUBLE_SHARP_MAP = {
+  'A##': 'C',
+  'B##': 'C#',
+  'C##': 'D',
+  'D##': 'E',
+  'E##': 'F#',
+  'F##': 'G',
+  'G##': 'A',
+};
+
+const ACCIDENTAL_SHARP_MAP = {
+  'E#': 'F',
+  'B#': 'C',
+};
+
 const OCTAVE_SEMITONE_COUNT = NOTES.length;
 
 /**
@@ -51,4 +76,18 @@ const getFretNote = (rootNote, index) => {
   return getIndexMap()[noteIndex];
 };
 
-export { NOTES, getFretNote, getNoteMap, getIndexMap };
+const convertFlatsToSharps = (notes) => notes.map((note) => FLAT_TO_SHARP_MAP[note] || note);
+const convertDoubleSharps = (notes) => notes.map((note) => DOUBLE_SHARP_MAP[note] || note);
+const convertAccidentalSharps = (notes) => notes.map((note) => ACCIDENTAL_SHARP_MAP[note] || note);
+
+const normalizeNotes = (notes) => {
+  let normalizedNotes = notes.slice();
+
+  normalizedNotes = convertFlatsToSharps(normalizedNotes);
+  normalizedNotes = convertDoubleSharps(normalizedNotes);
+  normalizedNotes = convertAccidentalSharps(normalizedNotes);
+
+  return normalizedNotes;
+};
+
+export { NOTES, getFretNote, getNoteMap, getIndexMap, normalizeNotes };

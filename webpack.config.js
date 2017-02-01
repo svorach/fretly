@@ -20,15 +20,15 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
         test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        include: path.resolve(process.cwd(), '/src')
+        loader: 'eslint-loader'
       },
       { 
         test: /\.scss$/, 
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: "css-loader!sass-loader",
+          fallback: "style-loader",
+          use: "css-loader!sass-loader",
         }),
       },
       {

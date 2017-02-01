@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function NoteFilter({ setVisibilityFilter, visibilityFilter, filters }) {
   function getToggleButton() {
@@ -42,9 +43,9 @@ function NoteFilter({ setVisibilityFilter, visibilityFilter, filters }) {
 }
 
 NoteFilter.propTypes = {
-  setVisibilityFilter: React.PropTypes.func.isRequired,
-  visibilityFilter: React.PropTypes.string.isRequired,
-  filters: React.PropTypes.object.isRequired,
+  setVisibilityFilter: PropTypes.func.isRequired,
+  visibilityFilter: PropTypes.string.isRequired,
+  filters: PropTypes.object.isRequired,
 };
 
 export default NoteFilter;

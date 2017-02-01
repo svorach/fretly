@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Tuning = ({ tuning, activeTuning, setActiveTuning }) =>
   <li>
@@ -12,9 +13,9 @@ const Tuning = ({ tuning, activeTuning, setActiveTuning }) =>
   </li>;
 
 Tuning.propTypes = ({
-  tuning: React.PropTypes.object,
-  activeTuning: React.PropTypes.object,
-  setActiveTuning: React.PropTypes.func,
+  tuning: PropTypes.object,
+  activeTuning: PropTypes.object,
+  setActiveTuning: PropTypes.func,
 });
 
 export default Tuning;

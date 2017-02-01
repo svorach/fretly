@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tuning from './Tuning.jsx';
 
 const mapTunings = (activeTuning, tunings, setActiveTuning) =>
@@ -19,9 +20,9 @@ const TuningList = ({ activeTuning, tunings, setActiveTuning }) =>
   </div>;
 
 TuningList.propTypes = ({
-  activeTuning: React.PropTypes.object,
-  tunings: React.PropTypes.array,
-  setActiveTuning: React.PropTypes.function,
+  activeTuning: PropTypes.object,
+  tunings: PropTypes.array,
+  setActiveTuning: PropTypes.function,
 });
 
 export default TuningList;
