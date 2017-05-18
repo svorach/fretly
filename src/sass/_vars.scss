@@ -1,5 +1,6 @@
 $primary: #dc6065;
 $primary: #1abc9c;
+$bg: #204261;
 $background: #9bbcc3;
 $background: linear-gradient(180deg, #0ebfac 0%, #3c7ff5 30%, #5f44e8 75%);
 $background-landscape: linear-gradient(90deg, #229ccc 0%, #1f193c 75%);
@@ -16,7 +17,7 @@ $fretboard-bg: #59463E;
 $fretboard-bg: #cecece;
 $fretboard-bg: $light;
 
-$text-color: $dark;
+$text-color: #76a1ca;
 
 // neck
 $nut-color: $dark;
@@ -24,7 +25,8 @@ $nut-color: $dark;
 //strings
 $string-count: 6;
 // sass is weird? 1 = 100; 100 / 6 strings
-$string-height: percentage(1 / $string-count); 
+$string-height: percentage(1 / $string-count);
+$string-height: 60px;
 $string-display-width: 2px;
 $string-border-color: rgba(255,255,255,0.5);
 

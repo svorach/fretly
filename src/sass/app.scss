@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  background: $background-landscape;
+  background: $bg;
   background-repeat: no-repeat;
   background-size: cover;
   color: $text-color;
@@ -90,17 +90,7 @@ li {
 }
 
 @media screen and (max-width: 680px) and (orientation: portrait) {
-  body {
-    background: $background-portait;
-  }
-
   li {
     display: block;
-  }
-}
-
-@media screen and (max-width: 1337px) and (orientation: landscape) {
-  body {
-    background: $background-landscape-sm;
   }
 }

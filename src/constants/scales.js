@@ -1,4 +1,5 @@
 export const SCALES = [
+  { name: 'D Major', notes: ['D', 'E', 'F#', 'G', 'A', 'B', 'C♯'] },
   { name: 'C Major (Ionian)', notes: ['C', 'D', 'E', 'F', 'G', 'A', 'B'] },
   { name: 'D Lydian', notes: ['D', 'E', 'F#', 'G#', 'A', 'B', 'C#'] },
   { name: 'B Natural Minor', notes: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'] },

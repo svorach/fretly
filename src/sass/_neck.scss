@@ -8,7 +8,6 @@
 
 .neck {
   background: $fretboard-bg;
-  height: 360px;
   position: relative;
 }
 
@@ -159,7 +158,6 @@
   @include adjustFretSize(24, false);
 
   .neck {
-    height: 300px;
     width: 200%;
   }
 }
@@ -202,6 +200,7 @@
 
   .neck-container {
     overflow-y: visible;
+    height: 100%;
   }
 
   .neck {
