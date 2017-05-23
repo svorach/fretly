@@ -184,7 +184,7 @@
 
   @include adjustFretSize(24, true);
   // fret markers
-  .string:nth-child(6) .fret::before {
+  .string:nth-last-child(1) .fret::before {
     content: attr(data-fret);
     color: #fff;
     display: block;
@@ -213,6 +213,7 @@
   
   .string {
     flex-direction: column;
+    height: auto;
 
     &::after {
       border-bottom: none;

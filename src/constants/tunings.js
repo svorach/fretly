@@ -74,7 +74,20 @@ export const TUNINGS = [
       { stringNumber: 4, rootNote: 'D' },
       { stringNumber: 5, rootNote: 'A' },
       { stringNumber: 6, rootNote: 'E' },
-      { stringNumber: 6, rootNote: 'B' },
+      { stringNumber: 7, rootNote: 'B' },
+    ],
+  },
+  {
+    name: '8 String Standard',
+    strings: [
+      { stringNumber: 1, rootNote: 'E' },
+      { stringNumber: 2, rootNote: 'B' },
+      { stringNumber: 3, rootNote: 'G' },
+      { stringNumber: 4, rootNote: 'D' },
+      { stringNumber: 5, rootNote: 'A' },
+      { stringNumber: 6, rootNote: 'E' },
+      { stringNumber: 7, rootNote: 'B' },
+      { stringNumber: 8, rootNote: 'F#' },
     ],
   },
 ];
