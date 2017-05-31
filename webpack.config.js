@@ -18,29 +18,32 @@ module.exports = {
     'react/lib/ReactContext': true,
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: 'eslint-loader',
-        include: __dirname + '/src'
-      }
-    ],
-    loaders: [
+        include: path.resolve(process.cwd(), '/src')
+      },
+      { 
+        test: /\.scss$/, 
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: "style-loader",
+          loader: "css-loader!sass-loader",
+        }),
+      },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass')
-      }, {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'stage-2', 'react']
-        }
+        use: 'babel-loader'
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin({
+      filename: "styles.css",
+      disable: false,
+      allChunks: true
+    })
   ],
   devServer: {
     hot: true,

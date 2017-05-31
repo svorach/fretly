@@ -83,8 +83,6 @@ class App extends React.Component {
         );
       });
 
-    console.log(state.tuning.strings);
-
     return (
       <div id="container">
         <h1>Fretly</h1>
