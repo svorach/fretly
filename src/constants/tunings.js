@@ -11,14 +11,12 @@ export const TUNINGS = [
     ],
   },
   {
-    name: 'Architects',
+    name: 'Bass Standard',
     strings: [
-      { stringNumber: 1, rootNote: 'C#' },
-      { stringNumber: 2, rootNote: 'G#' },
-      { stringNumber: 3, rootNote: 'E' },
-      { stringNumber: 4, rootNote: 'B' },
-      { stringNumber: 5, rootNote: 'F#' },
-      { stringNumber: 6, rootNote: 'G#' },
+      { stringNumber: 1, rootNote: 'B' },
+      { stringNumber: 2, rootNote: 'G' },
+      { stringNumber: 3, rootNote: 'A' },
+      { stringNumber: 4, rootNote: 'E' },
     ],
   },
   {
@@ -99,6 +97,23 @@ export const TUNINGS = [
       { stringNumber: 6, rootNote: 'E' },
       { stringNumber: 7, rootNote: 'B' },
       { stringNumber: 8, rootNote: 'F#' },
+    ],
+  },
+  {
+    name: '12 String Standard',
+    strings: [
+      { stringNumber: 1, rootNote: 'E', octave: 5 },
+      { stringNumber: 2, rootNote: 'E', octave: 4 },
+      { stringNumber: 3, rootNote: 'B', octave: 4 },
+      { stringNumber: 4, rootNote: 'B', octave: 3 },
+      { stringNumber: 5, rootNote: 'G', octave: 4 },
+      { stringNumber: 6, rootNote: 'G', octave: 3 },
+      { stringNumber: 7, rootNote: 'D', octave: 4 },
+      { stringNumber: 8, rootNote: 'D', octave: 3 },
+      { stringNumber: 9, rootNote: 'A', octave: 3 },
+      { stringNumber: 10, rootNote: 'A', octave: 2 },
+      { stringNumber: 11, rootNote: 'E', octave: 3 },
+      { stringNumber: 12, rootNote: 'E', octave: 2 },
     ],
   },
 ];

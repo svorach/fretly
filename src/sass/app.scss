@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import '_vars';
+@import '_funcs';
 @import '_neck';
+
+// $roboto-slab:'Roboto Slab', serif;
+// $titillium: 'Titillium Web', sans-serif;
+// $fjalla-one: 'Fjalla One', sans-serif;
+// $dosis: 'Dosis', sans-serif;
+// $slabo: 'Slabo 27px', serif;
+// 'Fira Mono', 'Input Mono', Menlo, Consolas, monospace;
 
 *,
 *::after {
@@ -11,6 +19,7 @@
 html,
 body {
   min-height: 100%;
+  margin: 0;
 }
 
 body {
@@ -18,16 +27,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: $text-color;
-  font-family: 'Fira Mono', 'Input Mono', Menlo, Consolas, monospace;
-  font-weight: 500;
-  padding: 20px;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: 36px;
-  font-weight: 700;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  font-family: $roboto-slab;
 }
 
 h1,
@@ -35,45 +35,91 @@ h2,
 h3,
 h4,
 h5 {
-  color: #fff;
-  margin: 5px 0 5px 0;
+  margin: 5px 0;
   padding: 0;
 }
 
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.app-header {
+  background: $light;
+  box-shadow: 0 2px 34px rgba(0,0,0,0.5);
+  color: $dark;
+  font-family: $fjalla-one;
+  padding: $padding-size $padding-size $padding-size / 4 $padding-size;
+}
 
 a {
-  color: $text-color;
+  color: $primary;
   text-decoration: none;
+}
 
-  &.setting.active {
-    color: $text-color;
-    i.fa {
-      color: #fff;
-    }
-  }
+i {
+  color: $primary;
+}
 
-  &.active,
-  &:hover,
-  &.setting:hover,
-  &[href^='mailto'] {
-    color: #fff;
+.logo {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+
+  .version {
+    font-size: 12px;
+    padding: 3px;
+    color: $primary;
+    border: 1px solid $primary;
+    position: absolute;
+    margin-left: 10px;
+    top: 3px;
+    line-height: inherit;
   }
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  line-height: 32px;
+.hero-text {
+  color: $medium;
   font-size: 18px;
-  display: inline;
-  margin-right: 22px;
+  line-height: 20px;
+  margin: 16px 0;
+  text-transform: uppercase;
 
-  &:last-child a {
-    border-bottom: none;
+  em {
+    color: $secondary;
+    font-style: normal;
+  }
+
+  b {
+    color: $dark;
+  }
+}
+
+.control {
+  background: none;
+  border: 1px solid $light;
+  border-radius: 10px;
+  color: $highlight;
+  border-color: $highlight;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px;
+  transition: all 0.15s ease-in;
+
+  &:hover {
+    color: $dark;
+    border-color: $dark;
+  }
+
+  &.disabled,
+  &.off {
+    color: $disabled;
+    border-color: $disabled;
   }
 }
 
@@ -89,16 +135,89 @@ li {
   }
 }
 
-ul.open {
-  display: block;
+.lists-container {
+  padding: $padding-size / 2 $padding-size;
+  display: flex;
+  
+  h2 {
+    color: $secondary;
+  }
+
+  a {
+    color: $light;
+
+    &:hover {
+      color: $accent;
+    }
+  }
 }
 
-ul.collapsed {
-  display: none;
+.list-container {
+  margin-right: $padding-size;
+  font-weight: 100;
 }
 
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+
+  li {
+    line-height: 32px;
+    font-size: 18px;
+    margin-right: 22px;
+  }
+}
+
+.info-help {
+  border-left: solid 10px $primary;
+  background: $paper;
+  padding: $padding-size;
+  color: darken($paper, 60);
+  columns: 2;
+  font-family: 'Garamond';
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 24px;
+
+  ul {
+    margin-bottom: 10px;
+    columns: 2;
+    list-style: none;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.content-wrapper {
+  max-width: 600px;
+}
+
+.chord-name {
+  color: $primary;
+}
+
+.chord-notes {
+  color: $secondary;
+}
+
+// MOBILE PORTAIT
 @media screen and (max-width: 680px) and (orientation: portrait) {
+  .neck-container {
+    padding: 0 $padding-size / 2;
+  }
+
   li {
     display: block;
+  }
+
+  .control {
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 0;
+    text-align: center;
   }
 }

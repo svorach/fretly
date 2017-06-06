@@ -42,8 +42,9 @@
 }
 
 .note {
+  @include text-contrast($fretboard-bg);
+  background: rgba(255,255,255,0.35);
   border-radius: 100%;
-  color: $dark;
   display: block;
   height: $note-size;
   font-size: $note-text-size;
@@ -58,6 +59,10 @@
   z-index: 1;
   transition: transform .75s ease-in-out;
   text-shadow: none;
+
+  &:hover {
+    color: $primary;
+  }
 
   &.show-when-highlighted {
     display: none;
@@ -79,25 +84,13 @@
   }
 
   &.selected {
-    background: $primary;
-    border: 2px solid #fff;
+    background: $secondary;
     color: #fff;
-    line-height: 28px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.75);
-    text-shadow: 0 1px 1px rgba(0,0,0,0.75);
-    border: 2px solid $dark;
     box-sizing: border-box;
-    line-height: 28px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.75);
-    text-shadow: 0 1px 1px rgba(0,0,0,0.75);
-
-    &:hover {
-      border-color: #fff;
-    }
   }
 
   &.root {
-    background: $bg
+    background: $primary;
   }
 }
 
@@ -174,19 +167,10 @@
   }
 }
 
-@media screen and (max-width: 1337px) and (orientation: landscape) {
+@media screen and (max-width: 1337px) {
   @include adjustFretSize(24, false);
 
   .neck {
-    width: 200%;
-  }
-}
-
-@media screen and (max-width: 680px) and (orientation: landscape) {
-  @include adjustFretSize(24, false);
-
-  .neck {
-    height: 80vh;
     width: 200%;
   }
 

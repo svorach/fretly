@@ -1,51 +1,84 @@
-$primary: #dc6065;
-$primary: #1abc9c;
-$bg: #204261;
-$background: #9bbcc3;
-$background: linear-gradient(180deg, #0ebfac 0%, #3c7ff5 30%, #5f44e8 75%);
-$background-landscape: linear-gradient(90deg, #229ccc 0%, #1f193c 75%);
-$background-portait: linear-gradient(-180deg, #229ccc 0%, #1f193c 75%);
-$background-landscape-sm: linear-gradient(90deg, #229ccc 0%, #1f193c 155%);
+@import url('https://fonts.googleapis.com/css?family=Dosis|Fjalla+One|Roboto+Slab|Slabo+27px|Titillium+Web');
 
-$flat: linear-gradient(90deg, #1abc9c 15%, #2ecc71 15%, #2ecc71 12%, #3498db 12%, #3498db 32%, #9b59b6 32%, #9b59b6 35%, #34495e 35%, #34495e 55%, #f1c40f 55%, #f1c40f 59%, #e67e22 59%, #e67e22 63%, #e74c3c 63%, #e74c3c 82%, #ecf0f1 82%, #ecf0f1 92%, #95a5a6 92%);
+// FLAT
+$_fc: #1abc9c;
+$_fgr: #2ecc71;
+$_fb: #3498db;
+$_fp: #9b59b6;
+$_fdb: #34495e;
+$_fy: #f1c40f;
+$_for: #e67e22;
+$_fr: #e74c3c;
+$_fw: #ecf0f1;
+$_fg: #95a5a6;
 
-$dark: #1f193c;
-$light: #D9D0C7;
-$highlight: #229ccc;
+$roboto-slab:'Roboto Slab', serif;
+$titillium: 'Titillium Web', sans-serif;
+$fjalla-one: 'Fjalla One', sans-serif;
+$dosis: 'Dosis', sans-serif;
+$slabo: 'Slabo 27px', serif;
 
-$fretboard-bg: #59463E;
-$fretboard-bg: #cecece;
-$fretboard-bg: $light;
+// MATERIALS
+$maple: #dac4a5;
+$rosewood: #694932;
+$ivory: #efd8c8;
+$ebony: #1d1917;
+$graphite: #1f1f1f;
+$paper: #dad1c3;
 
-$text-color: #76a1ca;
+// SHADES
+$dark: $graphite;
+$light: $_fw;
+$medium: lighten($dark, 25%);
+$highlight: $_fr;
 
-// neck
+// APPLICATION
+$bg: lighten($graphite, 5%);
+$accent: $highlight;
+
+$primary: $_fr;
+$secondary: $_fc;
+$tertiary: $_for;
+
+$text-color: $light;
+$text-light: $light;
+$text-dark: $dark;
+$disabled: $_fg;
+
+$padding-size: 40px;
+
+// APPLICATIOM STATES
+$disabled: $_fg;
+
+// FRETBOARD
 $nut-color: $dark;
+$fretboard-bg: $maple;
 
-//strings
+// STRINGS
 $string-count: 6;
-// sass is weird? 1 = 100; 100 / 6 strings
 $string-height: percentage(1 / $string-count);
 $string-height: 60px;
 $string-display-width: 2px;
 $string-border-color: rgba(255,255,255,0.5);
 
-// frets
+// FRETS
 $fret-border-color: #969696;
 $fret-border: 3px solid $fret-border-color;
 
-// notes
+// NOTES
 $note-text: $bg;
+$note-color: $text-color;
 $note-highlight: $primary;
+$note-selection: $_for;
 $note-size: 30px;
 $note-text-size: 16px;
 
-// dots
+// FRET MARKERS (DOTS)
 $dot-size: 24px;
 $dot-background: #fff;
 $dot-border: none;
 $dot-size-mobile: $dot-size * 2;
 
-// effects
-$hard-shadow: 0 1px 1px rgba(0,0,0,0.8);
+// EFFECTS
+$hard-shadow: 0 1px 1px rgba(0,0,0,0.5);
 $small-shadow: 0 1px 1px rgba(0,0,0,0.25);

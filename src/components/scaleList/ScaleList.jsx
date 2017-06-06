@@ -4,9 +4,6 @@ import Scale from './Scale.jsx';
 
 import { MODES } from '../../constants/scales';
 
-let classes = '';
-let open = true;
-
 const mapScales = (scales, activeScale, setActiveScale) =>
   MODES.map((scale, i) =>
     <Scale
@@ -17,19 +14,22 @@ const mapScales = (scales, activeScale, setActiveScale) =>
     />
   );
 
-const toggle = (e) => {
-  e.preventDefault();
-
-  open = !open;
-  classes = open ? 'open' : 'collapsed';
-
-  return null;
-};
-
 const ScaleList = ({ scales, activeScale, setActiveScale }) =>
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <div className="list-container">
+    <h2>Modes - {activeScale.name} <a href=""></a></h2>
+    <ul className="list scale-list">
+=======
   <div>
-    <h2 onClick={toggle} >Modes {activeScale.name} <a href="">-</a></h2>
-    <ul className={`scale-list  ${classes}`}>
+    <h2>Modes - {activeScale.name} <a href=""></a></h2>
+    <ul className="scale-list">
+>>>>>>> c4ef9c0... Wired up a possible chords component. UX sucks.
+=======
+  <div className="list-container">
+    <h2>Modes - {activeScale.name} <a href=""></a></h2>
+    <ul className="list scale-list">
+>>>>>>> a59a8b3... Finished rebase of UX, improved UX after merge.
       {mapScales(scales, activeScale, setActiveScale)}
     </ul>
   </div>;

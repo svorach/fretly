@@ -90,4 +90,10 @@ const normalizeNotes = (notes) => {
   return normalizedNotes;
 };
 
-export { NOTES, getFretNote, getNoteMap, getIndexMap, normalizeNotes };
+class FRScale {
+  constructor(scale) {
+    Object.assign(this, scale);
+  }
+}
+
+export { NOTES, getFretNote, getNoteMap, getIndexMap, normalizeNotes, FRScale };

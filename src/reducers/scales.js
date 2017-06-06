@@ -1,4 +1,4 @@
-import { SCALES as scales } from '../constants/scales';
+import { MODES as scales } from '../constants/scales';
 
 const scale = (state = scales, action) => {
   switch (action.type) {

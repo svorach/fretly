@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const buildDirectory = './dist/';
 
 module.exports = {
@@ -25,7 +24,7 @@ module.exports = {
         loader: 'eslint-loader'
       },
       { 
-        test: /\.scss$/, 
+        test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: "css-loader!sass-loader",
@@ -43,12 +42,12 @@ module.exports = {
       filename: "styles.css",
       disable: false,
       allChunks: true
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     hot: true,
     inline: true,
-    port: 1337,
-    historyApiFallback: true
+    port: 1337
   }
 };

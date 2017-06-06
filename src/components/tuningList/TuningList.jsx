@@ -12,9 +12,9 @@ const mapTunings = (activeTuning, tunings, setActiveTuning) =>
   );
 
 const TuningList = ({ activeTuning, tunings, setActiveTuning }) =>
-  <div>
+  <div className="list-container">
     <h2>Tunings</h2>
-    <ul className="tuning-list">
+    <ul className="list tuning-list">
       {mapTunings(activeTuning, tunings, setActiveTuning)}
     </ul>
   </div>;

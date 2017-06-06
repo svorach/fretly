@@ -20,5 +20,9 @@ export const SET_ACTIVE_MODE = 'SET_ACTIVE_MODE';
 
 // selected notes
 export const SELECT_NOTE = 'SELECT_NOTE';
-export const SELECT_ROOT_NOTE = 'SELECT_ROOT_NOTE';
 export const CLEAR_NOTES = 'CLEAR_NOTES';
+export const SELECT_ROOT_NOTE = 'SELECT_ROOT_NOTE';
+export const CLEAR_ROOT_NOTE = 'CLEAR_ROOT_NOTE';
+
+// chords
+export const FIND_CHORD = 'FIND_CHORD';

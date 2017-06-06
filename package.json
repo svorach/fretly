@@ -42,6 +42,7 @@
     "react-redux": "^5.0.2",
     "redux": "^3.5.2",
     "redux-devtools": "^3.2.0",
+    "sass-lint": "^1.10.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "teoria": "2.2.0",
