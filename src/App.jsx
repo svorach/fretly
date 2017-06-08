@@ -66,6 +66,8 @@ class App extends React.Component {
       type: SET_ACTIVE_SCALE,
       scale: scaleToSet,
     });
+
+    this.findScale();
   }
 
   /** Responsible for setting the state of the tuning. */
@@ -225,7 +227,6 @@ class App extends React.Component {
               filters={filters}
             />
 
-            <Control text="Reset" onClick={this.reset} />
             <Control text="Reset" disabled={false} onClick={this.reset} />
             <Control text="Detect Scale" disabled onClick={(e) => e.preventDefault()} />
             <Control text="Suggest Next Chord" disabled onClick={(e) => e.preventDefault()} />
