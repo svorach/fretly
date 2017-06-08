@@ -1,9 +1,6 @@
 // neck
 export const SET_STRINGS = 'SET_STRINGS';
 
-// visibility filter
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-
 // scale
 export const CLEAR_SCALE = 'CLEAR_SCALE';
 export const SET_SCALE = 'SET_SCALE';
@@ -26,3 +23,7 @@ export const CLEAR_ROOT_NOTE = 'CLEAR_ROOT_NOTE';
 
 // chords
 export const FIND_CHORD = 'FIND_CHORD';
+
+// application specific state
+export const TOGGLE_HELP = 'TOGGLE_HELP';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';

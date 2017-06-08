@@ -43,6 +43,7 @@
 
 .note {
   @include text-contrast($fretboard-bg);
+  color: $text-paper;
   background: rgba(255,255,255,0.35);
   border-radius: 100%;
   display: block;

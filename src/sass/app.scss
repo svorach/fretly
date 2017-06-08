@@ -4,13 +4,6 @@
 @import '_funcs';
 @import '_neck';
 
-// $roboto-slab:'Roboto Slab', serif;
-// $titillium: 'Titillium Web', sans-serif;
-// $fjalla-one: 'Fjalla One', sans-serif;
-// $dosis: 'Dosis', sans-serif;
-// $slabo: 'Slabo 27px', serif;
-// 'Fira Mono', 'Input Mono', Menlo, Consolas, monospace;
-
 *,
 *::after {
   box-sizing: border-box;
@@ -27,7 +20,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: $text-color;
-  font-family: $roboto-slab;
+  font-family: $serif;
 }
 
 h1,
@@ -48,14 +41,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-.app-header {
-  background: $light;
-  box-shadow: 0 2px 34px rgba(0,0,0,0.5);
-  color: $dark;
-  font-family: $fjalla-one;
-  padding: $padding-size $padding-size $padding-size / 4 $padding-size;
-}
-
 a {
   color: $primary;
   text-decoration: none;
@@ -63,6 +48,35 @@ a {
 
 i {
   color: $primary;
+}
+
+// APPLICATION STATE
+.animated {
+  transition: all 0.5s ease;
+  will-change: transform;
+}
+
+.on-canvas {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.off-canvas {
+  opacity: 0;
+  transform: translateY(-200%);
+  visibility: hidden;
+}
+
+// MAIN APPLICATION
+.app-header {
+  background: $light;
+  box-shadow: $large-shadow;
+  color: $dark;
+  font-family: $sans-serif;
+  padding: $padding-size $padding-size $padding-size / 4 $padding-size;
+  position: relative;
+  z-index: 5;
 }
 
 .logo {
@@ -106,9 +120,11 @@ i {
   border-radius: 10px;
   color: $highlight;
   border-color: $highlight;
+  font-family: $sans-serif;
   font-size: 14px;
   margin-right: 10px;
   padding: 5px;
+  text-transform: uppercase;
   transition: all 0.15s ease-in;
 
   &:hover {
@@ -171,23 +187,43 @@ i {
 }
 
 .info-help {
-  border-left: solid 10px $primary;
   background: $paper;
-  padding: $padding-size;
-  color: darken($paper, 60);
+  border-left: solid 10px $primary;
+  box-shadow: $large-shadow;
+  padding: $padding-size / 2 $padding-size;
+  color: $text-paper;
   columns: 2;
-  font-family: 'Garamond';
+  font-family: $serif;
   font-weight: 100;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  position: absolute;
+  overflow-x: auto;
+  width: 100%;
+  z-index: 2;
+
+  h2 {
+    break-before: column;
+  }
 
   ul {
+    padding: 0;
+    margin: 0;
     margin-bottom: 10px;
-    columns: 2;
     list-style: none;
 
-    li {
-      margin-bottom: 10px;
+    & > li {
+      margin-bottom: 15px;
+    }
+
+    ol {
+      padding: 0 0 0 20px;
+      margin: 0;
+    }
+
+    ol li {
+      border-bottom: 1px dashed $text-paper;
+      padding: 10px 0;
     }
   }
 }
@@ -210,6 +246,20 @@ i {
     padding: 0 $padding-size / 2;
   }
 
+  .lists-container {
+    display: block;
+  }
+
+  .info-help {
+    overflow-x: inherit;
+    columns: inherit;
+
+    ul {
+      columns: inherit;
+      padding: 0;
+    }
+  }
+
   li {
     display: block;
   }
@@ -219,5 +269,6 @@ i {
     margin-bottom: 10px;
     margin-right: 0;
     text-align: center;
+    width: 100%;
   }
 }

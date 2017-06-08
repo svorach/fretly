@@ -11,6 +11,7 @@ import ChordList from './components/chordList/ChordList.jsx';
 
 import NoteFilter from './components/note/NoteFilter.jsx';
 import Control from './components/controls/Control.jsx';
+import Help from './components/help/Help.jsx';
 
 import { store } from './store';
 
@@ -29,6 +30,7 @@ import {
   CLEAR_NOTES,
   CLEAR_ROOT_NOTE,
   FIND_CHORD,
+  TOGGLE_HELP,
 } from './constants/actionTypes';
 
 import { TUNINGS } from './constants/tunings';
@@ -48,6 +50,7 @@ class App extends React.Component {
     this.isNoteSelected = this.isNoteSelected.bind(this);
     this.findScale = this.findScale.bind(this);
     this.findChord = this.findChord.bind(this);
+    this.toggleHelp = this.toggleHelp.bind(this);
     this.reset = this.reset.bind(this);
 
     this.state = {
@@ -188,6 +191,12 @@ class App extends React.Component {
     this.findScale();
   }
 
+  toggleHelp(e) {
+    e.preventDefault();
+
+    store.dispatch({ type: TOGGLE_HELP, showHelp: !store.getState().showHelp });
+  }
+
   reset(e) {
     e.preventDefault();
 
@@ -232,67 +241,15 @@ class App extends React.Component {
             <Control text="Suggest Next Chord" disabled onClick={(e) => e.preventDefault()} />
             <Control text="Suggest Key" disabled onClick={(e) => e.preventDefault()} />
             <Control text="Suggest Resolve" disabled onClick={(e) => e.preventDefault()} />
+            <Control
+              text={`${state.showHelp ? 'Hide Help' : 'Show Help'}`}
+              disabled={false}
+              onClick={this.toggleHelp}
+            />
           </nav>
         </header>
 
-        <section className="info-help">
-          <div className="content-wrapper">
-            <header>
-              <p>
-                Roadmap to stability and full planned feature list coming soon!
-                For now, please have a look at the tips below.
-                How you start depends on your needs.
-                All feedback is welcome and greatly appreciated.
-              </p>
-            </header>
-
-            <p>
-              One of the most powerful things about Fretly is how extendable the chart is.
-              Fretly is mobile first for extensive visual reference in your pocket, but quite useful
-              on desktop for the writing musician as well.
-            </p>
-
-            <p>
-              Fretly has a wide variety of uses and they all
-              apply to any tuning, any number of strings.
-              Bass players, 7, 8 and even 12 string guitars,
-              banjoes, mandolins are all possible.
-              Custom tunings will be coming very quickly but
-              are already supported internally.
-              Fretly was designed from the ground up to work
-              with all fretted and stringed instruments.
-            </p>
-
-            <ul>
-              <li>
-                <b>Note Reference</b>
-              </li>
-              <li>
-                <b>Scale Reference</b>
-                <ol>
-                  <li>Select a mode/scale from the list</li>
-                  <li>Tap on a note to select a root and complete the "key"</li>
-                  <li>You can filter out notes that are not in key using the controls below.</li>
-                  <li>
-                    Switch the
-                  </li>
-                </ol>
-              </li>
-              <li><b>Chord Discovery</b>
-                <ol>
-                  <li>Start by selecting a note without having a scale/mode selected.</li>
-                  <li>Select another note.</li>
-                  <li>It is possible a chord has already been found, if not try a third note.</li>
-                  <li>If no chord found after four notes, resetting and trying again may help.</li>
-                  <li>Chances are you just need to widen your intervals! (gap between notes)</li>
-                  <li>Avoid chromatic selections (A, A#, B)</li>
-                  <li>Storing chords coming soon.</li>
-                  <li>Chord progression building coming soon.</li>
-                </ol>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <Help show={state.showHelp} toggle={this.toggleHelp} />
 
         <div className="lists-container">
           <ScaleList

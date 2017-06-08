@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis|Fjalla+One|Roboto+Slab|Slabo+27px|Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Roboto+Slab');
 
 // FLAT
 $_fc: #1abc9c;
@@ -12,11 +12,8 @@ $_fr: #e74c3c;
 $_fw: #ecf0f1;
 $_fg: #95a5a6;
 
-$roboto-slab:'Roboto Slab', serif;
-$titillium: 'Titillium Web', sans-serif;
-$fjalla-one: 'Fjalla One', sans-serif;
-$dosis: 'Dosis', sans-serif;
-$slabo: 'Slabo 27px', serif;
+$serif: 'Roboto Slab', 'Garamond', 'Gerogia', serif;
+$sans-serif: 'Fjalla One', 'Impact', 'Helvetica Neue', sans-serif;
 
 // MATERIALS
 $maple: #dac4a5;
@@ -31,6 +28,7 @@ $dark: $graphite;
 $light: $_fw;
 $medium: lighten($dark, 25%);
 $highlight: $_fr;
+$large-shadow: 0 2px 34px rgba(0,0,0,0.5);
 
 // APPLICATION
 $bg: lighten($graphite, 5%);
@@ -43,6 +41,7 @@ $tertiary: $_for;
 $text-color: $light;
 $text-light: $light;
 $text-dark: $dark;
+$text-paper: darken($paper, 60);
 $disabled: $_fg;
 
 $padding-size: 40px;
@@ -52,7 +51,7 @@ $disabled: $_fg;
 
 // FRETBOARD
 $nut-color: $dark;
-$fretboard-bg: $maple;
+$fretboard-bg: $paper;
 
 // STRINGS
 $string-count: 6;

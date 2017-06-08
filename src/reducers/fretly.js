@@ -5,6 +5,7 @@ import tuning from './tuning';
 import selectedNotes from './selectedNotes';
 import rootNote from './rootNote';
 import possibleChords from './possibleChords';
+import showHelp from './showHelp';
 import { combineReducers } from 'redux';
 
 export const fretly = combineReducers({
@@ -13,6 +14,7 @@ export const fretly = combineReducers({
   scales,
   selectedNotes,
   rootNote,
+  showHelp,
   possibleChords,
   visibilityFilter,
 });
