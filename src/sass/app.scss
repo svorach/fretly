@@ -250,6 +250,10 @@ i {
     display: block;
   }
 
+  .list {
+    columns: inherit;
+  }
+
   .info-help {
     overflow-x: inherit;
     columns: inherit;

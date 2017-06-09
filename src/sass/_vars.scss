@@ -23,25 +23,27 @@ $ebony: #1d1917;
 $graphite: #1f1f1f;
 $paper: #dad1c3;
 
+// BRAND
+$primary: $_fr;
+$secondary: $_fc;
+$tertiary: $_for;
+
 // SHADES
 $dark: $graphite;
 $light: $_fw;
 $medium: lighten($dark, 25%);
-$highlight: $_fr;
+$highlight: $secondary;
 $large-shadow: 0 2px 34px rgba(0,0,0,0.5);
+$accent: $highlight;
 
 // APPLICATION
 $bg: lighten($graphite, 5%);
-$accent: $highlight;
-
-$primary: $_fr;
-$secondary: $_fc;
-$tertiary: $_for;
 
 $text-color: $light;
 $text-light: $light;
 $text-dark: $dark;
 $text-paper: darken($paper, 60);
+
 $disabled: $_fg;
 
 $padding-size: 40px;

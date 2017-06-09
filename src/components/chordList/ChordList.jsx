@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 const mapChords = (chords) =>
   chords.map((chord, i) =>
     <li className="chord" key={`chord-${i}`}>
-      Chord: <span className="chord-name">{chord.chord}</span>
-      <br />
+      Chord: <span className="chord-name">{chord.chord}</span>&nbsp;
       Notes: <span className="chord-notes">{chord.notes}</span>
     </li>
   );

@@ -151,7 +151,6 @@ class App extends React.Component {
     const rootNote = state.rootNote;
     const scale = state.activeScale.name;
     const notes = tonal.scale.get(scale, rootNote);
-    const intervals = tonal.harmonics(notes);
 
     if (rootNote && scale) {
       store.dispatch({ type: CLEAR_SCALE });
@@ -161,7 +160,6 @@ class App extends React.Component {
         scale: new FRScale({
           name: `${rootNote} ${scale}`,
           notes,
-          intervals,
         }),
       });
     }

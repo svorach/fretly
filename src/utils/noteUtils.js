@@ -1,5 +1,6 @@
+import tonal from 'tonal';
+// FUTURE: Unit Test!!!!
 const NOTES = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
-
 const FLAT_TO_SHARP_MAP = {
   Ab: 'G#',
   Bb: 'A#',
@@ -8,6 +9,13 @@ const FLAT_TO_SHARP_MAP = {
   Eb: 'D#',
   Fb: 'E',
   Gb: 'F#',
+  Abb: 'G',
+  Bbb: 'A',
+  Cbb: 'A#',
+  Dbb: 'C',
+  Ebb: 'D',
+  Fbb: 'D#',
+  Gbb: 'F',
 };
 
 const DOUBLE_SHARP_MAP = {
@@ -81,18 +89,30 @@ const convertDoubleSharps = (notes) => notes.map((note) => DOUBLE_SHARP_MAP[note
 const convertAccidentalSharps = (notes) => notes.map((note) => ACCIDENTAL_SHARP_MAP[note] || note);
 
 const normalizeNotes = (notes) => {
-  let normalizedNotes = notes.slice();
+  if (notes && notes.length) {
+    let normalizedNotes = notes.slice();
 
-  normalizedNotes = convertFlatsToSharps(normalizedNotes);
-  normalizedNotes = convertDoubleSharps(normalizedNotes);
-  normalizedNotes = convertAccidentalSharps(normalizedNotes);
+    normalizedNotes = convertFlatsToSharps(normalizedNotes);
+    normalizedNotes = convertDoubleSharps(normalizedNotes);
+    normalizedNotes = convertAccidentalSharps(normalizedNotes);
 
-  return normalizedNotes;
+    return normalizedNotes;
+  }
+
+  return notes;
 };
 
 class FRScale {
   constructor(scale) {
-    Object.assign(this, scale);
+    if (scale) {
+      const notes = normalizeNotes(scale.notes);
+
+      Object.assign(this, {
+        notes,
+        intervals: tonal.harmonics(notes),
+        name: scale.name,
+      });
+    }
   }
 }
 
