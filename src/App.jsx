@@ -129,7 +129,7 @@ class App extends React.Component {
   selectNote(e, note) {
     e.preventDefault();
 
-    const state = store.getState();
+    let state = store.getState();
     const noSelectedNotes = state.selectedNotes.length === 0;
     const shouldClearRoot = state.rootNote === note;
 
@@ -143,7 +143,13 @@ class App extends React.Component {
 
     store.dispatch({ type: SELECT_NOTE, note });
 
+    state = store.getState();
+
     this.findChord(e);
+    this.findScale();
+
+    const s = tonal.scale.detect(state.selectedNotes.join(' '));
+    console.dir(s);
   }
 
   findScale() {

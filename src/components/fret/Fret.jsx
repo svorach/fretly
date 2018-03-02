@@ -4,7 +4,9 @@ import Note from '../note/Note.jsx';
 
 /* FUTURE: Make fret marker into a component instead of a psuedo element.. */
 function Fret({ fret, note, highlight, showOnHighlight, selectNote, isNoteSelected, isRootNote }) {
+  console.log(fret);
   return (
+    
     <div className="fret" data-fret={fret}>
       <Note
         note={note}

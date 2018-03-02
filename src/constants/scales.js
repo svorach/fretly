@@ -6,5 +6,5 @@ const mapScales = (mode) => {
   return modeObj;
 };
 
-export const MODES = tonal.scale.names().slice(1, 8).map(mapScales);
-// export const MODES = tonal.scale.names().map(mapScales);
+// export const MODES = tonal.scale.names().slice(1, 8).map(mapScales);
+export const MODES = tonal.scale.names().map(mapScales);

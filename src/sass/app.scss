@@ -171,6 +171,8 @@ i {
 .list-container {
   margin-right: $padding-size;
   font-weight: 100;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .list {
