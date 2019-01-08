@@ -52,6 +52,7 @@ class App extends React.Component {
     this.findChord = this.findChord.bind(this);
     this.toggleHelp = this.toggleHelp.bind(this);
     this.reset = this.reset.bind(this);
+    this.changeTuning = this.changeTuning.bind(this);
 
     this.state = {
       tuning: props.tuning,
@@ -203,12 +204,24 @@ class App extends React.Component {
     store.dispatch({ type: CLEAR_ROOT_NOTE });
   }
 
+  changeTuning(e, stringNumber) {
+    const note = e.target.value;
+    const currentTuning = this.state.tuning;
+    const strings = currentTuning.strings.slice();
+
+    strings[stringNumber - 1].rootNote = note;
+    delete strings[stringNumber - 1].frets;
+
+    store.dispatch({ type: SET_STRINGS, tuning: { name: 'custom', strings } });
+  }
+
   /** Where all the magic happens. */
   render() {
     const state = store.getState();
     const showOnHighlight = state.visibilityFilter === SHOW_ONLY_HIGHLIGHTED_NOTES;
     const filters = { SHOW_ALL_NOTES, SHOW_ONLY_HIGHLIGHTED_NOTES };
     const tunings = this.getTunings(TUNINGS);
+    console.log(state.tuning);
 
     return (
       <section id="container">
@@ -220,12 +233,6 @@ class App extends React.Component {
             <em>Haphazardly Engineered</em> by &nbsp;
             <a href="mailto:svorach@gmail.com">Shane Vorachek</a>
           </h1>
-
-          {/*
-          <h1>Fretly</h1>
-          A work in progress proudly crafted by&nbsp;
-          <a href="mailto:shane.vorachek@gmail.com">Shane Vorachek</a>
-          */}
 
           <nav className="controls">
             <NoteFilter
@@ -266,6 +273,8 @@ class App extends React.Component {
 
           <ChordList chords={state.possibleChords} />
 
+          {state.tuning.strings.map(string => <p>{string.rootNote}</p>)}
+
           <div className="list-container">
             <h2>Possible Scales</h2>
             <ul className="list intervals-list">
@@ -282,7 +291,8 @@ class App extends React.Component {
         </div>
 
         <Neck
-          strings={state.tuning.strings}
+          changeTuning={this.changeTuning}
+          strings={this.state.tuning.strings}
           rootNote={state.rootNote}
           activeScale={this.activeScale}
           selectNote={this.selectNote}

@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import String from '../string/String.jsx';
 
-const Neck = ({ strings, rootNote, highlight, showOnHighlight, selectNote, isNoteSelected }) => {
-  const mapStrings = (string, i) =>
+const Neck = ({
+  strings,
+  rootNote,
+  highlight,
+  showOnHighlight,
+  selectNote,
+  isNoteSelected,
+  changeTuning,
+}) => {
+  const mapStrings = (string, i) => (
     <String
       data={string}
       highlight={highlight}
@@ -12,7 +20,9 @@ const Neck = ({ strings, rootNote, highlight, showOnHighlight, selectNote, isNot
       showOnHighlight={showOnHighlight}
       isNoteSelected={isNoteSelected}
       key={`string-${i}`}
-    />;
+      changeTuning={changeTuning}
+    />
+  );
 
   return (
     <section className="neck-container">
@@ -28,6 +38,7 @@ Neck.propTypes = {
   showOnHighlight: PropTypes.bool.isRequired,
   selectNote: PropTypes.func.isRequired,
   isNoteSelected: PropTypes.func.isRequired,
+  changeTuning: PropTypes.func.isRequired,
 };
 
 export default Neck;

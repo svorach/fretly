@@ -6,23 +6,27 @@ function Note({ note, highlight, showOnHighlight, selectNote, isNoteSelected, is
   const highlightNote = highlight(note);
   const selectedNote = isNoteSelected(note);
 
-  if (highlightNote) {
-    classList.push('highlight');
-  }
+  const buildClassList = () => {
+    if (highlightNote) {
+      classList.push('highlight');
+    }
 
-  if (showOnHighlight) {
-    classList.push('show-on-highlight');
-  }
+    if (showOnHighlight) {
+      classList.push('show-on-highlight');
+    }
 
-  if (selectedNote) {
-    classList.push('selected');
-  }
+    if (selectedNote) {
+      classList.push('selected');
+    }
 
-  if (isRootNote) {
-    classList.push('root');
-  }
+    if (isRootNote) {
+      classList.push('root');
+    }
+  };
 
   const renderNote = () => {
+    buildClassList();
+
     if (showOnHighlight && !highlightNote) {
       return <span></span>;
     }
